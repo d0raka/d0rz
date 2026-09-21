@@ -48,11 +48,25 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Upload Pages artifact
+      - name: Create Pages site
         continue-on-error: true
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/github-script@v7
         with:
-          path: dist
+          script: |
+            const { owner, repo } = context.repo
+            const attempts = [
+              { build_type: 'legacy', source: { branch: 'gh-pages', path: '/' } },
+              { build_type: 'workflow' },
+            ]
+            for (const body of attempts) {
+              try {
+                const res = await github.request('POST /repos/{owner}/{repo}/pages', { owner, repo, ...body })
+                console.log('created pages', res.status, JSON.stringify(res.data))
+                return
+              } catch (error) {
+                console.log('create pages failed', body.build_type, error.status, error.message)
+              }
+            }
 
       - name: Publish dist to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
@@ -60,15 +74,3 @@ jobs:
           folder: dist
           branch: gh-pages
           clean: true
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        continue-on-error: true
-        uses: actions/deploy-pages@v4
