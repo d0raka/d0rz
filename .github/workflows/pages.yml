@@ -48,29 +48,57 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Create Pages site
-        continue-on-error: true
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const { owner, repo } = context.repo
-            const attempts = [
-              { build_type: 'legacy', source: { branch: 'gh-pages', path: '/' } },
-              { build_type: 'workflow' },
-            ]
-            for (const body of attempts) {
-              try {
-                const res = await github.request('POST /repos/{owner}/{repo}/pages', { owner, repo, ...body })
-                console.log('created pages', res.status, JSON.stringify(res.data))
-                return
-              } catch (error) {
-                console.log('create pages failed', body.build_type, error.status, error.message)
-              }
-            }
-
       - name: Publish dist to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           branch: gh-pages
           clean: true
+
+      - name: Point GitHub Pages at gh-pages
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo
+            const desired = {
+              build_type: 'legacy',
+              source: { branch: 'gh-pages', path: '/' },
+            }
+
+            try {
+              const current = await github.request('GET /repos/{owner}/{repo}/pages', { owner, repo })
+              console.log('current pages', JSON.stringify(current.data))
+            } catch (error) {
+              console.log('get pages failed', error.status, error.message)
+              try {
+                const created = await github.request('POST /repos/{owner}/{repo}/pages', {
+                  owner,
+                  repo,
+                  ...desired,
+                })
+                console.log('created pages', created.status, JSON.stringify(created.data))
+              } catch (createError) {
+                console.log('create pages failed', createError.status, createError.message)
+              }
+            }
+
+            try {
+              const updated = await github.request('PUT /repos/{owner}/{repo}/pages', {
+                owner,
+                repo,
+                ...desired,
+              })
+              console.log('updated pages', updated.status, JSON.stringify(updated.data))
+            } catch (error) {
+              console.log('update pages failed', error.status, error.message)
+            }
+
+            try {
+              const rebuilt = await github.request('POST /repos/{owner}/{repo}/pages/builds', {
+                owner,
+                repo,
+              })
+              console.log('requested pages build', rebuilt.status, JSON.stringify(rebuilt.data))
+            } catch (error) {
+              console.log('pages build request failed', error.status, error.message)
+            }
