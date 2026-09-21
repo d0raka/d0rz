@@ -21,13 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Enable GitHub Pages
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api --method POST repos/${{ github.repository }}/pages -f build_type=workflow || true
-
       - name: Restore binary assets
         run: |
           python3 - <<'PY'
@@ -57,6 +50,8 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
