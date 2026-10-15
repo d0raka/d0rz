@@ -41,7 +41,19 @@
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
+
     <div class="grain" aria-hidden="true"></div>
+    <div class="field" aria-hidden="true">
+      <div class="field__glow"></div>
+      <div class="field__grid field__grid--fine"></div>
+      <div class="field__grid field__grid--major"></div>
+      <div class="field__nodes"></div>
+      <div class="field__cross"></div>
+      <div class="field__beam"></div>
+      <div class="field__sweep"></div>
+    </div>
+    <div class="scan" aria-hidden="true"></div>
+
     <header class="nav">
       <div class="nav__inner">
         <a class="nav__brand" href="#top" aria-label="d0rz">d0rz</a>
@@ -52,9 +64,131 @@
         </nav>
       </div>
     </header>
+
     <main class="stage" id="main">
-      <p>Canonical metadata now points at https://d0raka.github.io/d0rz/.</p>
+      <div class="monument">
+        <h1 class="wordmark" id="top" aria-label="d0rz" data-sheen>
+          <span class="glyph">d</span>
+          <span class="zero">
+            <span class="glyph glyph--open">0</span>
+            <span class="pair" aria-hidden="true">
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </span>
+          </span>
+          <span class="glyph">r</span>
+          <span class="glyph">z</span>
+        </h1>
+        <div class="monument__copy">
+          <p class="lede">Independent work on AI agents and the systems around them.</p>
+          <p class="hero__kicker">
+            <span data-type>build · ship · maintain</span><span class="caret" aria-hidden="true"></span>
+          </p>
+        </div>
+      </div>
+
+      <section class="live is-loading" id="live" aria-labelledby="live-label">
+        <p class="index" id="live-label">Live system</p>
+        <div class="live__frame" data-live aria-busy="true">
+          <header class="live__head">
+            <h2>d0rz workstation</h2>
+            <p class="live__health" data-live-health data-state="loading" aria-live="polite">
+              <span class="live__dot" aria-hidden="true"></span>
+              <span data-live-health-label>Loading</span>
+            </p>
+          </header>
+
+          <div class="live__metrics">
+            <article class="metric">
+              <p class="metric__label">CPU</p>
+              <p class="metric__value" data-live-cpu></p>
+              <svg class="metric__spark" viewBox="0 0 72 18" aria-hidden="true">
+                <polyline data-spark="cpu" fill="none" stroke="currentColor" stroke-width="1"></polyline>
+              </svg>
+            </article>
+            <article class="metric">
+              <p class="metric__label">Memory</p>
+              <p class="metric__value" data-live-memory></p>
+              <svg class="metric__spark" viewBox="0 0 72 18" aria-hidden="true">
+                <polyline data-spark="memory" fill="none" stroke="currentColor" stroke-width="1"></polyline>
+              </svg>
+            </article>
+            <article class="metric">
+              <p class="metric__label">Disk</p>
+              <p class="metric__value" data-live-disk></p>
+              <svg class="metric__spark" viewBox="0 0 72 18" aria-hidden="true">
+                <polyline data-spark="disk" fill="none" stroke="currentColor" stroke-width="1"></polyline>
+              </svg>
+            </article>
+            <article class="metric">
+              <p class="metric__label">Uptime</p>
+              <p class="metric__value" data-live-uptime></p>
+            </article>
+            <article class="metric">
+              <p class="metric__label">Agents</p>
+              <p class="metric__value" data-live-agents></p>
+            </article>
+            <article class="metric">
+              <p class="metric__label">Services</p>
+              <p class="metric__value" data-live-services></p>
+            </article>
+          </div>
+
+          <footer class="live__meta">
+            <p data-live-platform>Reading public status</p>
+            <time data-live-updated datetime="">Updated —</time>
+          </footer>
+        </div>
+      </section>
+
+      <section class="board" aria-label="About, work, and contact">
+        <article class="cell" id="about">
+          <p class="index">// 01</p>
+          <div class="panel">
+            <h2>About</h2>
+            <p>
+              I’m Dor, 26, a computer science student. I build in public as d0rz —
+              products people actually use, the systems they run on, and the quiet
+              work between a laptop and something that has to stay up. Class, code,
+              and shipping: that’s the whole picture.
+            </p>
+          </div>
+        </article>
+        <article class="cell" id="now">
+          <p class="index">// 02</p>
+          <div class="panel">
+            <h2>Agents</h2>
+            <p>
+              I design AI agents and the stack around them — not a chat window,
+              systems that take a job, call tools, and run it to the end.
+              Automation, workflows, and agents wired into real software: the
+              model, the glue, and the infrastructure a run has to live on.
+            </p>
+          </div>
+        </article>
+        <article class="cell" id="contact">
+          <p class="index">// 03</p>
+          <div class="panel">
+            <h2>Contact</h2>
+            <p>GitHub and X. That’s the public surface.</p>
+            <p class="panel__links">
+              <a href="https://github.com/d0raka" target="_blank" rel="noopener noreferrer">github.com/d0raka</a>
+              <a href="https://x.com/d0rz_x" target="_blank" rel="noopener noreferrer">x.com/d0rz_x</a>
+            </p>
+          </div>
+        </article>
+      </section>
     </main>
+
+    <footer class="foot">
+      <p class="foot__brand">d0rz</p>
+      <p class="foot__meta"><time datetime="2026">2026</time></p>
+      <p class="foot__clock">
+        <span>local</span>
+        <time id="clock" datetime=""></time>
+      </p>
+    </footer>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
