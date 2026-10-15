@@ -5,20 +5,22 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
 
-Public homepage for d0rz: [d0raka.github.io/d0rz](https://d0raka.github.io/d0rz/)
+Public homepage for Dor Aka: [d0raka.cc](https://d0raka.cc/)
 
-A static site. The Live System strip reads public JSON from [d0rz-status](https://github.com/d0raka/d0rz-status). It does not talk to a private server. The large **d0rz** wordmark, with two marks in the `0`, is the identity of the page.
+A static, desktop-inspired personal site. The menu bar reads public JSON from [d0rz-status](https://github.com/d0raka/d0rz-status). The site does not talk to a private server. The main wordmark says DOR, with eyes in the O.
 
 ## Demo
 
-- Live site: [d0raka.github.io/d0rz](https://d0raka.github.io/d0rz/)
+- Live site: [d0raka.cc](https://d0raka.cc/)
 
 ## Features
 
-- Hero with the wordmark (the two marks follow the pointer)
-- Live System: health, CPU, memory, disk, uptime, agents, and services
-- About, Agents, and Contact copy in `index.html`
-- Motion is skipped when `prefers-reduced-motion: reduce` is set
+- Hero with DOR (the eyes in the `O` follow the pointer)
+- Centered menu bar metrics: CPU, memory, disk, uptime, and platform, with status, update age, and clock grouped on the right
+- A Navy desktop that opens About after three seconds and all three selected project windows shortly after; the dock can open them at any time
+- Draggable windows with close, minimize, and maximize controls
+- A fixed dock with GitHub, LinkedIn, X, and a CV app that displays and downloads the PDF
+- A slowly moving grid background that does not track the pointer; motion preferences are respected
 
 ## Tech stack
 
@@ -46,12 +48,12 @@ Open the URL Vite prints (default `http://localhost:5173`).
 
 ## Usage
 
-The page is one scroll: hero, Live System, About / Agents / Contact, footer. Status numbers come from the JSON feed. The other copy lives in `index.html`.
+The desktop layout fits the viewport without page scrolling. About opens one window containing About, Work, and Contact after about three seconds; Projects opens all three project windows around four seconds after load. Manual window actions take precedence over the delayed opening. Narrow screens use window buttons to show one section at a time. Status numbers come from the JSON feed. Site copy and the selected project links live in `index.html`, so the three temporary project choices are easy to replace. The CV app displays `public/Dor_Aka_CV_2026_EN.pdf` and provides a download link; that PDF is published with the site.
 
 Field rules and polling: [docs/public-status.md](docs/public-status.md).
 
-GitHub Actions (`.github/workflows/pages.yml`) runs the tests and the production build, then deploys `dist/` to GitHub Pages. Vite uses a relative `base` (`./`), so the same build works at `https://d0raka.github.io/d0rz/`. A `public/CNAME` file is what attaches a custom domain once DNS is ready.
+GitHub Actions (`.github/workflows/pages.yml`) runs the tests and the production build, then deploys `dist/` to GitHub Pages. Vite uses a relative `base` (`./`), so the same build works at `https://d0raka.github.io/d0rz/` and `https://d0raka.cc/`. The domain migration steps and current DNS state are in [docs/custom-domain.md](docs/custom-domain.md).
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE). `assets/github-mark.svg` is the GitHub mark from GitHub's official favicon asset; GitHub retains its trademark rights.

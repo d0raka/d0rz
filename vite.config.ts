@@ -37,7 +37,7 @@ function spaFallback(): Plugin {
 }
 
 export default defineConfig({
-  // Relative URLs work at https://d0raka.github.io/d0rz/.
+  // Relative URLs work at https://d0raka.cc/ and https://d0raka.github.io/d0rz/.
   base: "./",
   plugins: [mockStatusTimestamp(), spaFallback()],
   server: {
