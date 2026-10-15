@@ -16,11 +16,11 @@ A static, desktop-inspired personal site. The menu bar reads public JSON from [d
 ## Features
 
 - Hero with Dor Aka's name (the eyes in the `o` follow the pointer)
-- Menu bar: running state, CPU, memory, disk, uptime, platform, and last update
+- Centered menu bar metrics: CPU, memory, disk, uptime, and platform, with status, update age, and clock grouped on the right
 - A Navy desktop that starts with its windows closed; the dock opens the About window or all three selected project windows
 - Draggable windows with close, minimize, and maximize controls
 - A fixed dock with GitHub, X, and an in-site CV app
-- A stationary grid background; motion preferences are respected for the remaining interface effects
+- A slowly moving grid background that does not track the pointer; motion preferences are respected
 
 ## Tech stack
 
