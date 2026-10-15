@@ -1698,7 +1698,7 @@ body { height: 100dvh; min-height: 0; padding-bottom: 0; }
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: min(600px, calc(100dvh - 185px));
+  height: min(690px, calc(100dvh - 110px));
   min-height: 0;
 }
 .panel--about::before { flex: 0 0 34px; }
@@ -1717,8 +1717,20 @@ body { height: 100dvh; min-height: 0; padding-bottom: 0; }
 .panel--about .about-section h2,
 .panel--about .about-section p { margin: 0; }
 .panel--about .about-section h2 { margin-bottom: 8px; font-size: 1.24rem; }
-.panel--about .about-section p { font-size: .83rem; line-height: 1.46; }
+.panel--about .about-section p { font-size: .96rem; line-height: 1.5; }
+.panel--about .about-section p + p { margin-top: 8px; }
 .panel--about .about-section .panel__links { margin-top: 9px !important; gap: 19px; }
+
+@media (min-width: 1251px) and (min-height: 741px) {
+  .panel--about { overflow-y: auto; overscroll-behavior: contain; }
+  .panel--about .window-bar { position: sticky; top: 0; z-index: 2; }
+  .panel--about .about-section { flex: 0 0 auto; padding: 18px 22px; }
+  .panel--about .about-section h2 { font-size: 1.4rem; }
+  .panel--about #contact { padding-block: 12px; }
+}
+@media (min-width: 1350px) and (min-height: 741px) {
+  .board { width: calc(100% + 42px); }
+}
 
 @media (max-width: 1250px), (max-height: 740px) {
   .board { display: contents; }
