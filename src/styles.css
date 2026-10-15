@@ -1575,7 +1575,7 @@ html, body { height: 100%; overflow: hidden; }
 body { height: 100dvh; min-height: 0; padding-bottom: 0; }
 .stage { flex: 1 1 0; min-height: 0; overflow: hidden; }
 .scene-nav { display: none; }
-.wordmark { font-size: clamp(5rem, 7.3vw, 8.6rem); line-height: 1.08; }
+.wordmark { gap: .06em; font-size: clamp(5rem, 7.3vw, 8.6rem); line-height: 1.08; letter-spacing: 0; }
 .wordmark .zero { padding-block: .05em; }
 .wordmark .glyph--open { line-height: 1.08; }
 .field__beam, .field__sweep, .scan { display: none !important; }
