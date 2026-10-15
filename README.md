@@ -17,7 +17,8 @@ A static, desktop-inspired personal site. The menu bar reads public JSON from [d
 
 - Hero with Dor Aka's name (the eyes in the `o` follow the pointer)
 - Menu bar: running state, CPU, memory, disk, uptime, platform, and last update
-- Three desktop columns: one `about.txt` window with About / Work / Contact, the Dor Aka wordmark, and three selected project cards
+- A Navy desktop that starts with its windows closed; the dock opens the About window or all three selected project windows
+- Draggable windows with close, minimize, and maximize controls
 - A fixed dock with GitHub, X, and an in-site CV app
 - A stationary grid background; motion preferences are respected for the remaining interface effects
 
@@ -47,7 +48,7 @@ Open the URL Vite prints (default `http://localhost:5173`).
 
 ## Usage
 
-The desktop layout fits the viewport without page scrolling. Narrow screens use window buttons to show one section at a time. Status numbers come from the JSON feed. Site copy, CV sections, and the selected project links live in `index.html`, so the three temporary project choices are easy to replace. The in-site CV reflects Dor's source PDF plus his later updates: Kavim from April 2026, age 27, and the start of his second year at HIT. The original PDF is not published with the site.
+The desktop layout fits the viewport without page scrolling. About opens one window containing About, Work, and Contact. Projects opens all three project windows together. Narrow screens use window buttons to show one section at a time. Status numbers come from the JSON feed. Site copy, CV sections, and the selected project links live in `index.html`, so the three temporary project choices are easy to replace. The in-site CV reflects Dor's source PDF plus his later updates: Kavim from April 2026, age 27, and the start of his second year at HIT. The original PDF is not published with the site.
 
 Field rules and polling: [docs/public-status.md](docs/public-status.md).
 
