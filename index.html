@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#0b1220" />
     <meta name="color-scheme" content="dark" />
-    <title>d0rz</title>
+    <title>Dor Aka — software, AI agents, systems</title>
     <meta
       name="description"
-      content="d0rz — AI agents, software, and the systems around them."
+      content="Dor Aka builds software, AI agents, and the systems around them."
     />
     <link rel="canonical" href="https://d0raka.github.io/d0rz/" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="d0rz" />
-    <meta property="og:title" content="d0rz" />
+    <meta property="og:site_name" content="Dor Aka" />
+    <meta property="og:title" content="Dor Aka" />
     <meta
       property="og:description"
       content="AI agents, software, and the systems around them."
@@ -26,7 +26,7 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@d0rz_x" />
-    <meta name="twitter:title" content="d0rz" />
+    <meta name="twitter:title" content="Dor Aka" />
     <meta
       name="twitter:description"
       content="AI agents, software, and the systems around them."
@@ -56,12 +56,16 @@
 
     <header class="nav menubar">
       <div class="nav__inner">
-        <a class="nav__brand" href="#top" aria-label="d0rz">d0rz</a>
+        <a class="nav__brand" href="#top" aria-label="Dor Aka home">Dor Aka</a>
         <span class="menubar__title">Portfolio</span>
         <div class="menubar__metrics" aria-label="Public server status">
           <span class="menubar__health" data-menu-health><span class="menubar__dot" aria-hidden="true"></span><span data-menu-health-label>Connecting</span></span>
           <span class="menubar__metric">CPU <strong data-menu-cpu>—</strong></span>
           <span class="menubar__metric">RAM <strong data-menu-memory>—</strong></span>
+          <span class="menubar__metric">Disk <strong data-menu-disk>—</strong></span>
+          <span class="menubar__metric">Uptime <strong data-menu-uptime>—</strong></span>
+          <span class="menubar__metric menubar__metric--platform" data-menu-platform>Platform —</span>
+          <time class="menubar__updated" data-menu-updated datetime="">Updated —</time>
           <time id="menu-clock" datetime="" aria-label="Local time"></time>
         </div>
       </div>
@@ -69,17 +73,17 @@
 
     <main class="stage" id="main">
       <div class="monument">
-        <h1 class="wordmark" id="top" aria-label="d0rz" data-sheen>
-          <span class="glyph">d</span>
+        <h1 class="wordmark" id="top" aria-label="Dor Aka" data-sheen>
+          <span class="glyph">D</span>
           <span class="zero">
-            <span class="glyph glyph--open">0</span>
+            <span class="glyph glyph--open">o</span>
             <span class="pair" aria-hidden="true">
               <span class="dot"></span>
               <span class="dot"></span>
             </span>
           </span>
           <span class="glyph">r</span>
-          <span class="glyph">z</span>
+          <span class="glyph wordmark__surname"> Aka</span>
         </h1>
         <div class="monument__copy">
           <p class="lede">I build useful things and keep them running.</p>
@@ -89,102 +93,25 @@
         </div>
       </div>
 
-      <section class="live is-loading" id="live" aria-labelledby="live-label">
-        <p class="index" id="live-label">Live system</p>
-        <div class="live__frame" data-live aria-busy="true">
-          <header class="live__head">
-            <h2>d0rz workstation</h2>
-            <p class="live__health" data-live-health data-state="loading" aria-live="polite">
-              <span class="live__dot" aria-hidden="true"></span>
-              <span data-live-health-label>Loading</span>
-            </p>
-          </header>
-
-          <div class="live__metrics">
-            <article class="metric">
-              <p class="metric__label">CPU</p>
-              <p class="metric__value" data-live-cpu></p>
-              <svg class="metric__spark" viewBox="0 0 72 18" aria-hidden="true">
-                <polyline data-spark="cpu" fill="none" stroke="currentColor" stroke-width="1"></polyline>
-              </svg>
-            </article>
-            <article class="metric">
-              <p class="metric__label">Memory</p>
-              <p class="metric__value" data-live-memory></p>
-              <svg class="metric__spark" viewBox="0 0 72 18" aria-hidden="true">
-                <polyline data-spark="memory" fill="none" stroke="currentColor" stroke-width="1"></polyline>
-              </svg>
-            </article>
-            <article class="metric">
-              <p class="metric__label">Disk</p>
-              <p class="metric__value" data-live-disk></p>
-              <svg class="metric__spark" viewBox="0 0 72 18" aria-hidden="true">
-                <polyline data-spark="disk" fill="none" stroke="currentColor" stroke-width="1"></polyline>
-              </svg>
-            </article>
-            <article class="metric">
-              <p class="metric__label">Uptime</p>
-              <p class="metric__value" data-live-uptime></p>
-            </article>
-            <article class="metric">
-              <p class="metric__label">Agents</p>
-              <p class="metric__value" data-live-agents></p>
-            </article>
-            <article class="metric">
-              <p class="metric__label">Services</p>
-              <p class="metric__value" data-live-services></p>
-            </article>
-          </div>
-
-          <footer class="live__meta">
-            <p data-live-platform>Reading public status</p>
-            <time data-live-updated datetime="">Updated —</time>
-          </footer>
-        </div>
-      </section>
-
-      <section class="board" aria-label="About, work, and contact">
+      <section class="board" aria-label="About Dor Aka">
         <article class="cell" id="about">
           <p class="index">// 01</p>
           <div class="panel">
-            <h2>About</h2>
+            <h2>Hi, I’m Dor Aka.</h2>
             <p>
-              I’m Dor, a computer science student. I build in public as d0rz —
+              I’m a computer science student. I build in public —
               products people actually use, the systems they run on, and the quiet
               work between a laptop and something that has to stay up. Class, code,
               and shipping: that’s the whole picture.
             </p>
-          </div>
-        </article>
-        <article class="cell" id="now">
-          <p class="index">// 02</p>
-          <div class="panel">
-            <h2>Agents</h2>
-            <p>
-              I design AI agents and the stack around them — not a chat window,
-              systems that take a job, call tools, and run it to the end.
-              Automation, workflows, and agents wired into real software: the
-              model, the glue, and the infrastructure a run has to live on.
-            </p>
-          </div>
-        </article>
-        <article class="cell" id="contact">
-          <p class="index">// 03</p>
-          <div class="panel">
-            <h2>Contact</h2>
-            <p>GitHub and X. That’s the public surface.</p>
-            <p class="panel__links">
-              <a href="https://github.com/d0raka" target="_blank" rel="noopener noreferrer">github.com/d0raka</a>
-              <a href="https://x.com/d0rz_x" target="_blank" rel="noopener noreferrer">x.com/d0rz_x</a>
-            </p>
+            <p class="panel__links"><a href="https://github.com/d0raka" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://x.com/d0rz_x" target="_blank" rel="noopener noreferrer">X ↗</a></p>
           </div>
         </article>
       </section>
     </main>
 
     <nav class="dock" aria-label="Apps and links">
-      <a class="dock__app" href="#about" aria-label="About"><span class="dock__icon dock__icon--about" aria-hidden="true">d0</span><span>About</span></a>
-      <a class="dock__app" href="#live" aria-label="System"><span class="dock__icon dock__icon--system" aria-hidden="true">▥</span><span>System</span></a>
+      <a class="dock__app" href="#about" aria-label="About"><span class="dock__icon dock__icon--about" aria-hidden="true">DA</span><span>About</span></a>
       <span class="dock__divider" aria-hidden="true"></span>
       <button class="dock__app" type="button" data-open-cv aria-label="Open CV"><span class="dock__icon dock__icon--cv" aria-hidden="true">CV</span><span>CV</span></button>
       <a class="dock__app" href="https://github.com/d0raka" target="_blank" rel="noopener noreferrer" aria-label="GitHub, opens in a new tab"><span class="dock__icon dock__icon--github" aria-hidden="true">GH</span><span>GitHub</span></a>
@@ -193,11 +120,11 @@
 
     <dialog class="cv-window" id="cv-dialog" aria-labelledby="cv-title">
       <div class="cv-window__bar"><span class="cv-window__lights" aria-hidden="true">● ● ●</span><span>dor.cv</span><button type="button" data-close-cv aria-label="Close CV">×</button></div>
-      <div class="cv-window__body"><p class="index">// CURRICULUM VITAE</p><h2 id="cv-title">Dor’s CV</h2><p>The CV app is ready for Dor’s PDF. Experience and education will appear here once the source document is added.</p><p>For now, explore the About and System windows, or visit GitHub and X from the dock.</p></div>
+      <div class="cv-window__body"><p class="index">// CURRICULUM VITAE</p><h2 id="cv-title">Dor Aka’s CV</h2><p>The CV app is ready for Dor’s PDF. Experience and education will appear here once the source document is added.</p><p>For now, explore About, GitHub, and X from the dock.</p></div>
     </dialog>
 
     <footer class="foot">
-      <p class="foot__brand">d0rz</p>
+      <p class="foot__brand">Dor Aka</p>
       <p class="foot__meta"><time datetime="2026">2026</time></p>
       <p class="foot__clock">
         <span>local</span>

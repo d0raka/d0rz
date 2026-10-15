@@ -5,9 +5,9 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
 
-Public homepage for d0rz: [d0raka.github.io/d0rz](https://d0raka.github.io/d0rz/)
+Public homepage for Dor Aka: [d0raka.github.io/d0rz](https://d0raka.github.io/d0rz/)
 
-A static, desktop-inspired personal site. The menu bar and System window read public JSON from [d0rz-status](https://github.com/d0raka/d0rz-status). The site does not talk to a private server. The large **d0rz** wordmark, with two marks in the `0`, remains the identity of the page.
+A static, desktop-inspired personal site. The menu bar reads public JSON from [d0rz-status](https://github.com/d0raka/d0rz-status). The site does not talk to a private server. Dor Aka's name is the main wordmark, with eyes in the `o`.
 
 ## Demo
 
@@ -15,8 +15,8 @@ A static, desktop-inspired personal site. The menu bar and System window read pu
 
 ## Features
 
-- Hero with the wordmark (the two marks follow the pointer)
-- Menu bar and System window: health, CPU, memory, disk, uptime, agents, and services
+- Hero with Dor Aka's name (the eyes in the `o` follow the pointer)
+- Menu bar: running state, CPU, memory, disk, uptime, platform, and last update
 - Dock links for GitHub and X, plus an in-site CV window awaiting the source PDF
 - About copy in `index.html`
 - Motion is skipped when `prefers-reduced-motion: reduce` is set
@@ -47,7 +47,7 @@ Open the URL Vite prints (default `http://localhost:5173`).
 
 ## Usage
 
-The desktop layout shows the hero, System and About windows, and a fixed dock. Narrow screens stack the content. Status numbers come from the JSON feed. Other copy lives in `index.html`. The CV app currently contains a clearly labeled placeholder until Dor provides the PDF.
+The desktop layout shows the hero, About window, and a fixed dock. Narrow screens stack the content and wrap the menu metrics. Status numbers come from the JSON feed. Other copy lives in `index.html`. The CV app currently contains a clearly labeled placeholder until Dor provides the PDF.
 
 Field rules and polling: [docs/public-status.md](docs/public-status.md).
 

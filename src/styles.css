@@ -1326,3 +1326,77 @@ html.motion .foot {
   .lede { width: 100%; max-width: 100%; white-space: normal; }
   .wordmark { flex: none; width: fit-content; font-size: 24vw; }
 }
+
+/* Dor Aka edition: one identity, one status surface. */
+.nav { height: auto; min-height: var(--nav); flex: 0 0 auto; }
+.nav__inner { min-height: var(--nav); }
+.nav__brand { letter-spacing: -.04em; white-space: nowrap; }
+.menubar__metrics { gap: clamp(10px, 1.15vw, 18px); }
+.menubar__metric, .menubar__updated { white-space: nowrap; color: #a9b9c8; }
+.menubar__metric--platform { color: #d4e5e6; }
+.menubar__updated { font-size: .64rem; }
+.menubar__health { white-space: nowrap; }
+.stage {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  align-items: center;
+}
+.monument { height: auto; justify-content: center; }
+.wordmark { font-size: clamp(4.3rem, 7.7vw, 7.7rem); letter-spacing: -.09em; }
+.wordmark__surname { margin-left: .13em; }
+.wordmark .pair { top: 54%; }
+.wordmark .dot { width: .065em; height: .08em; }
+.board {
+  position: static;
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  margin: 0;
+  align-self: center;
+}
+.panel { min-height: 270px; }
+.panel h2 { margin-top: 25px; font-size: 1.6rem; }
+.panel p { font-size: .95rem; }
+.panel__links { flex-direction: row; gap: 24px; margin-top: 15px !important; }
+.dock__icon--about { font-size: .92rem; letter-spacing: -.07em; }
+@media (min-width: 1001px) {
+  .board { position: static; top: auto; right: auto; width: 100%; }
+}
+@media (max-width: 1100px) {
+  .nav__inner { flex-wrap: wrap; gap: 8px 18px; padding-block: 8px; }
+  .menubar__title { margin-left: auto; }
+  .menubar__metrics {
+    width: 100%;
+    margin-left: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 7px 14px;
+  }
+  .menubar__metric--platform { grid-column: span 2; }
+  #menu-clock { justify-self: end; }
+}
+@media (max-width: 1000px) {
+  .stage { display: flex; flex-direction: column; min-height: 0; gap: 32px; }
+  .monument { width: 100%; min-height: 280px; }
+  .wordmark { font-size: clamp(4rem, 11vw, 7rem); }
+  .board { width: 100%; }
+}
+@media (max-width: 620px) {
+  .nav__inner { padding-inline: 16px; }
+  .menubar__title { display: inline; }
+  .menubar__metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px 6px;
+    font-size: .62rem;
+  }
+  .menubar__metric { display: inline; }
+  .menubar__metric--platform { grid-column: span 2; }
+  .menubar__updated { font-size: .6rem; }
+  #menu-clock { display: none; }
+  .monument { min-height: 245px; padding: 30px 0 10px; }
+  .wordmark { font-size: clamp(2.9rem, 11vw, 4.8rem); max-width: 100%; }
+  .wordmark .pair { top: 54%; }
+  .lede { font-size: 1.22rem; }
+  .panel h2 { font-size: 1.35rem; }
+  .panel p { font-size: .85rem; }
+}
