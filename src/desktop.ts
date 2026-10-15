@@ -39,4 +39,45 @@ export function initDesktop(source: {
   dialog?.addEventListener("click", (event) => {
     if (event.target === dialog) dialog.close();
   });
+
+  const cvTabs = [...document.querySelectorAll<HTMLButtonElement>("[data-cv-tab]")];
+  const cvPages = [...document.querySelectorAll<HTMLElement>("[data-cv-page]")];
+  const selectCvPage = (name: string) => {
+    for (const tab of cvTabs) {
+      const selected = tab.dataset.cvTab === name;
+      tab.setAttribute("aria-selected", String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+    }
+    for (const page of cvPages) page.hidden = page.dataset.cvPage !== name;
+  };
+  for (const [index, tab] of cvTabs.entries()) {
+    tab.addEventListener("click", () => selectCvPage(tab.dataset.cvTab ?? "profile"));
+    tab.addEventListener("keydown", (event) => {
+      const next = event.key === "ArrowRight" ? index + 1 : event.key === "ArrowLeft" ? index - 1 : event.key === "Home" ? 0 : event.key === "End" ? cvTabs.length - 1 : -1;
+      if (next < 0 && event.key !== "ArrowLeft") return;
+      if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const nextTab = cvTabs[(next + cvTabs.length) % cvTabs.length];
+      selectCvPage(nextTab.dataset.cvTab ?? "profile");
+      nextTab.focus();
+    });
+  }
+
+  const sceneButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-scene-button]")];
+  const sceneItems = [...document.querySelectorAll<HTMLElement>("[data-scene-item]")];
+  const selectScene = (name: string) => {
+    for (const button of sceneButtons) button.setAttribute("aria-pressed", String(button.dataset.sceneButton === name));
+    for (const item of sceneItems) {
+      if (item.dataset.sceneItem === name) item.setAttribute("data-active", "");
+      else item.removeAttribute("data-active");
+    }
+  };
+  for (const button of sceneButtons) button.addEventListener("click", () => selectScene(button.dataset.sceneButton ?? "about"));
+  document.querySelector<HTMLAnchorElement>("[data-open-about]")?.addEventListener("click", (event) => {
+    event.preventDefault();
+    selectScene("about");
+    if (window.matchMedia("(max-width: 1250px), (max-height: 740px)").matches) {
+      sceneButtons.find((button) => button.dataset.sceneButton === "about")?.focus();
+    }
+  });
 }

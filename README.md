@@ -17,9 +17,9 @@ A static, desktop-inspired personal site. The menu bar reads public JSON from [d
 
 - Hero with Dor Aka's name (the eyes in the `o` follow the pointer)
 - Menu bar: running state, CPU, memory, disk, uptime, platform, and last update
-- Dock links for GitHub and X, plus an in-site CV window awaiting the source PDF
-- About, Work, and Contact windows in `index.html`
-- Motion is skipped when `prefers-reduced-motion: reduce` is set
+- Three desktop columns: About / Work / Contact, the Dor Aka wordmark, and three selected project cards
+- A fixed dock with GitHub, X, and an in-site CV app
+- A stationary grid background; motion preferences are respected for the remaining interface effects
 
 ## Tech stack
 
@@ -47,7 +47,7 @@ Open the URL Vite prints (default `http://localhost:5173`).
 
 ## Usage
 
-The desktop layout shows the hero, three windows (About, Work, Contact), and a fixed dock. Narrow screens stack the content and wrap the menu metrics. Status numbers come from the JSON feed. Other copy lives in `index.html`. The CV app currently contains a clearly labeled placeholder until Dor provides the PDF.
+The desktop layout fits the viewport without page scrolling. Narrow screens use window buttons to show one section at a time. Status numbers come from the JSON feed. Site copy, CV sections, and the selected project links live in `index.html`, so the three temporary project choices are easy to replace. The in-site CV reflects Dor's source PDF plus his later updates: Kavim from April 2026, age 27, and the start of his second year at HIT. The original PDF is not published with the site.
 
 Field rules and polling: [docs/public-status.md](docs/public-status.md).
 
@@ -55,4 +55,4 @@ GitHub Actions (`.github/workflows/pages.yml`) runs the tests and the production
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE). `assets/github-mark.svg` is the GitHub mark from GitHub's official favicon asset; GitHub retains its trademark rights.
