@@ -54,29 +54,6 @@ export function initDesktop(source: {
     if (event.target === dialog) dialog.close();
   });
 
-  const cvTabs = [...document.querySelectorAll<HTMLButtonElement>("[data-cv-tab]")];
-  const cvPages = [...document.querySelectorAll<HTMLElement>("[data-cv-page]")];
-  const selectCvPage = (name: string) => {
-    for (const tab of cvTabs) {
-      const selected = tab.dataset.cvTab === name;
-      tab.setAttribute("aria-selected", String(selected));
-      tab.tabIndex = selected ? 0 : -1;
-    }
-    for (const page of cvPages) page.hidden = page.dataset.cvPage !== name;
-  };
-  for (const [index, tab] of cvTabs.entries()) {
-    tab.addEventListener("click", () => selectCvPage(tab.dataset.cvTab ?? "profile"));
-    tab.addEventListener("keydown", (event) => {
-      const next = event.key === "ArrowRight" ? index + 1 : event.key === "ArrowLeft" ? index - 1 : event.key === "Home" ? 0 : event.key === "End" ? cvTabs.length - 1 : -1;
-      if (next < 0 && event.key !== "ArrowLeft") return;
-      if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
-      event.preventDefault();
-      const nextTab = cvTabs[(next + cvTabs.length) % cvTabs.length];
-      selectCvPage(nextTab.dataset.cvTab ?? "profile");
-      nextTab.focus();
-    });
-  }
-
   const sceneButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-scene-button]")];
   const sceneItems = [...document.querySelectorAll<HTMLElement>("[data-scene-item]")];
   const aboutSections = [...document.querySelectorAll<HTMLElement>("[data-about-section]")];
