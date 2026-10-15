@@ -7,7 +7,7 @@
 
 Public homepage for Dor Aka: [d0raka.github.io/d0rz](https://d0raka.github.io/d0rz/)
 
-A static, desktop-inspired personal site. The menu bar reads public JSON from [d0rz-status](https://github.com/d0raka/d0rz-status). The site does not talk to a private server. Dor Aka's name is the main wordmark, with eyes in the `o`.
+A static, desktop-inspired personal site. The menu bar reads public JSON from [d0rz-status](https://github.com/d0raka/d0rz-status). The site does not talk to a private server. The main wordmark says DOR, with eyes in the O.
 
 ## Demo
 
@@ -15,7 +15,7 @@ A static, desktop-inspired personal site. The menu bar reads public JSON from [d
 
 ## Features
 
-- Hero with Dor Aka's name (the eyes in the `o` follow the pointer)
+- Hero with DOR (the eyes in the `O` follow the pointer)
 - Centered menu bar metrics: CPU, memory, disk, uptime, and platform, with status, update age, and clock grouped on the right
 - A Navy desktop that opens About after three seconds and all three selected project windows shortly after; the dock can open them at any time
 - Draggable windows with close, minimize, and maximize controls
