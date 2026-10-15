@@ -1875,3 +1875,5 @@ html.motion .field__nodes { animation-duration: 55s; }
   .menubar__metric { padding: 0; border: 0 !important; }
   .menubar__metric--platform { grid-column: span 2; }
 }
+.dock__icon--cv { background: linear-gradient(145deg, #7299d9, #2b518f); color: #f2f6ff; }
+.dock__icon--cv img { width: 32px; height: 32px; }

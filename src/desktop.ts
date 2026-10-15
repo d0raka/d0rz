@@ -85,6 +85,8 @@ export function initDesktop(source: {
   const projectWindows = appWindows.filter((item) => item.dataset.window !== "about");
   const aboutApp = document.querySelector<HTMLElement>("[data-open-about]");
   const projectsApp = document.querySelector<HTMLElement>("[data-open-projects]");
+  let aboutTouched = false;
+  let projectsTouched = false;
   let topLayer = 10;
   const updateDock = () => {
     aboutApp?.classList.toggle("is-running", Boolean(aboutWindow?.classList.contains("is-open")));
@@ -107,6 +109,7 @@ export function initDesktop(source: {
   };
   document.querySelector<HTMLAnchorElement>("[data-open-about]")?.addEventListener("click", (event) => {
     event.preventDefault();
+    aboutTouched = true;
     selectScene("about");
     if (desktopWindowMode.matches && aboutWindow) openWindow(aboutWindow);
     else {
@@ -114,9 +117,17 @@ export function initDesktop(source: {
     }
   });
   document.querySelector<HTMLButtonElement>("[data-open-projects]")?.addEventListener("click", () => {
+    projectsTouched = true;
     if (desktopWindowMode.matches) projectWindows.forEach(openWindow);
     else selectScene("tennis");
   });
+
+  window.setTimeout(() => {
+    if (desktopWindowMode.matches && !aboutTouched && aboutWindow) openWindow(aboutWindow);
+  }, 3000);
+  window.setTimeout(() => {
+    if (desktopWindowMode.matches && !projectsTouched) projectWindows.forEach(openWindow);
+  }, 3800);
 
   for (const item of appWindows) {
     item.addEventListener("pointerdown", () => {
@@ -126,6 +137,8 @@ export function initDesktop(source: {
       button.addEventListener("click", (event) => {
         event.stopPropagation();
         if (!desktopWindowMode.matches) return;
+        if (item === aboutWindow) aboutTouched = true;
+        else projectsTouched = true;
         const action = button.dataset.windowAction;
         if (action === "close") closeWindow(item, true);
         if (action === "minimize") closeWindow(item, false);
