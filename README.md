@@ -1,49 +1,48 @@
 # d0rz
 
-Public homepage for **d0rz**: [d0rz.is-a.dev](https://d0rz.is-a.dev)
+Public homepage for d0rz: [d0rz.is-a.dev](https://d0rz.is-a.dev)
 
-Vite + TypeScript static site. No private-server integration. The large **d0rz** wordmark with two marks in the `0` is the identity of the page — do not replace it.
+A static site. The Live System strip reads public JSON from [d0rz-status](https://github.com/d0raka/d0rz-status). It does not talk to a private server. The large **d0rz** wordmark, with two marks in the `0`, is the identity of the page.
 
-## Run locally
+## Features
+
+- Hero with the wordmark (the two marks follow the pointer)
+- Live System: health, CPU, memory, disk, uptime, agents, and services
+- About, Agents, and Contact copy in `index.html`
+- Motion is skipped when `prefers-reduced-motion: reduce` is set
+
+## Tech stack
+
+- TypeScript and Vite
+- Vitest for the status parser and formatters
+- GitHub Actions and GitHub Pages
+
+## Setup
 
 ```bash
 npm install
 npm run dev
 ```
 
-Then open the URL Vite prints (default `http://localhost:5173`).
+Open the URL Vite prints (default `http://localhost:5173`).
 
-```bash
-npm test          # status parser / formatters
-npm run build     # typecheck + production bundle in dist/
-npm run preview   # serve dist/
-```
+| Script | What it does |
+| --- | --- |
+| `npm test` | Status parser and formatters |
+| `npm run build` | Typecheck and production bundle in `dist/` |
+| `npm run preview` | Serve `dist/` |
+| `npm run dev:live` | Dev server that fetches the public status JSON |
 
-Live System in development reads `public/status.mock.json`. Production builds use `.env.production` (`VITE_PUBLIC_STATUS_URL` → the public `d0rz-status` JSON). Details: [docs/public-status.md](docs/public-status.md).
+`npm run dev` uses `public/status.mock.json`. Production builds and `npm run dev:live` use the public d0rz-status URL. Set `VITE_PUBLIC_STATUS_URL` only to point somewhere else. Copy `.env.example` to `.env` for that override. Do not commit `.env` files.
 
-## Layout
+## Usage
 
-1. Hero (wordmark, lede)
-2. Live System (public workstation snapshot)
-3. About / Agents / Contact
-4. Footer
+The page is one scroll: hero, Live System, About / Agents / Contact, footer. Status numbers come from the JSON feed. The other copy lives in `index.html`.
 
-Copy for About, Agents, and Contact lives in `index.html`. Status numbers do not.
+Field rules and polling: [docs/public-status.md](docs/public-status.md).
 
-## Deploy
+GitHub Actions (`.github/workflows/pages.yml`) runs the tests and the production build, then deploys `dist/` to GitHub Pages. Vite uses a relative `base` (`./`), so the same build works at `https://d0raka.github.io/d0rz/` and at `d0rz.is-a.dev`. A `public/CNAME` file is what attaches the custom domain once DNS is ready.
 
-GitHub Actions (`.github/workflows/pages.yml`) runs `npm ci`, `npm test`, `npm run build`, and deploys `dist/` to GitHub Pages.
+## License
 
-Production builds read `.env.production`:
-
-```bash
-VITE_PUBLIC_STATUS_URL=https://raw.githubusercontent.com/d0raka/d0rz-status/main/status.json
-```
-
-That is a public GitHub raw URL, not a secret. Do not add private hostnames, Tailscale names, SSH, or control-plane addresses.
-
-Vite uses a relative `base` (`./`) so the same build works at `https://d0raka.github.io/d0rz/` and later at `d0rz.is-a.dev`. Custom-domain DNS is not attached yet. When is-a.dev is registered (a human-opened PR — do not generate that request with an assistant), add a `public/CNAME` file containing `d0rz.is-a.dev` and redeploy.
-
-## Motion
-
-Pointer sheen, typewriter kicker, live clock, and the two marks in the `0` tracking the cursor. The Live System health dot pulses only while the snapshot is healthy and fresh. All of that is skipped when `prefers-reduced-motion: reduce` is set.
+MIT. See [LICENSE](LICENSE).

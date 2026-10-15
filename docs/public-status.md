@@ -21,29 +21,25 @@ type PublicSystemStatus = {
 
 Rules the frontend enforces:
 
-- Extra keys are ignored (hostnames, IPs, Docker, paths, tokens, …).
-- `agent_count` must be a non-negative integer. The UI always prints a number (`0`, `1`, `12`), never “planned” or “coming soon”.
-- Percents are 0–100. `updated_at` must be ISO-8601.
+- Extra keys are ignored (hostnames, IPs, Docker, paths, tokens).
+- `agent_count` must be a non-negative integer. The UI always prints a number (`0`, `1`, `12`), never a placeholder word.
+- Percents are 0-100. `updated_at` must be ISO-8601.
 
 Parser: `src/status/parse.ts`. Types: `src/status/types.ts`.
 
 ## `VITE_PUBLIC_STATUS_URL`
 
-Copy `.env.example` to `.env` if you need to override the URL locally.
+The default public URL is:
 
-Production builds use `.env.production`:
+https://raw.githubusercontent.com/d0raka/d0rz-status/main/status.json
 
-```bash
-VITE_PUBLIC_STATUS_URL=https://raw.githubusercontent.com/d0raka/d0rz-status/main/status.json
-```
-
-That file is public GitHub raw JSON from [d0raka/d0rz-status](https://github.com/d0raka/d0rz-status). Vite inlines it at build time. It is not a secret.
+That file is public GitHub raw JSON from [d0raka/d0rz-status](https://github.com/d0raka/d0rz-status). It is not a secret. Copy `.env.example` to `.env` only when you need a different URL. Do not commit that file.
 
 | Mode | URL unset | URL set |
 | --- | --- | --- |
 | `npm run dev` | `/status.mock.json` | fetch that URL every 60s |
-| `npm run dev:live` | — | fetches the public `d0rz-status` JSON (`.env.live`) |
-| `npm run build` / production | uses `.env.production` when present; otherwise Live System shows **Unavailable** | fetch that URL every 60s |
+| `npm run dev:live` | public d0rz-status JSON | fetch that URL every 60s |
+| `npm run build` / production | public d0rz-status JSON | fetch that URL every 60s |
 
 ## Mock development mode
 
@@ -71,16 +67,12 @@ If `updated_at` is older than **15 minutes**, the health label is **Stale** inst
 
 | State | What you see |
 | --- | --- |
-| loading | skeleton cells, “Loading” |
-| invalid JSON / HTTP error / no URL in production | “Unavailable”; last good numbers if any |
+| loading | skeleton cells, Loading |
+| invalid JSON / HTTP error | Unavailable; last good numbers if any |
 | stale timestamp | numbers remain, label is **Stale** |
 
 A failed status fetch never blocks the hero, About, Agents, or Contact.
 
-## Replace the mock with the real public URL
+## Deploy
 
-The production URL is already set in `.env.production` to the public `d0rz-status` file:
-
-https://raw.githubusercontent.com/d0raka/d0rz-status/main/status.json
-
-`npm run build` bakes that URL into the bundle. GitHub Actions deploys `dist/` to GitHub Pages. Do not point this site at private hostnames, Tailscale names, SSH, or any control-plane machine.
+`npm run build` bakes the status URL into the bundle. GitHub Actions deploys `dist/` to GitHub Pages. Do not point this site at private hostnames or any control-plane machine.
