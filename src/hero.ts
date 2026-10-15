@@ -8,6 +8,7 @@ export function initHero(): void {
   const sheen = document.querySelector("[data-sheen]");
   const typeTarget = document.querySelector("[data-type]");
   const clock = document.getElementById("clock");
+  const menuClock = document.getElementById("menu-clock");
   let running = false;
 
   function ready() {
@@ -51,13 +52,18 @@ export function initHero(): void {
   }
 
   function clockTick() {
-    if (!(clock instanceof HTMLTimeElement)) return;
     const now = new Date();
     const hh = String(now.getHours()).padStart(2, "0");
     const mm = String(now.getMinutes()).padStart(2, "0");
     const ss = String(now.getSeconds()).padStart(2, "0");
-    clock.dateTime = now.toISOString();
-    clock.textContent = `${hh}:${mm}:${ss}`;
+    if (clock instanceof HTMLTimeElement) {
+      clock.dateTime = now.toISOString();
+      clock.textContent = `${hh}:${mm}:${ss}`;
+    }
+    if (menuClock instanceof HTMLTimeElement) {
+      menuClock.dateTime = now.toISOString();
+      menuClock.textContent = `${hh}:${mm}`;
+    }
   }
 
   function gaze() {

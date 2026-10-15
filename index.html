@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#08090c" />
+    <meta name="theme-color" content="#0b1220" />
     <meta name="color-scheme" content="dark" />
     <title>d0rz</title>
     <meta
@@ -54,14 +54,16 @@
     </div>
     <div class="scan" aria-hidden="true"></div>
 
-    <header class="nav">
+    <header class="nav menubar">
       <div class="nav__inner">
         <a class="nav__brand" href="#top" aria-label="d0rz">d0rz</a>
-        <nav class="nav__links" aria-label="Primary">
-          <a href="#live">System</a>
-          <a href="https://github.com/d0raka" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://x.com/d0rz_x" target="_blank" rel="noopener noreferrer">X</a>
-        </nav>
+        <span class="menubar__title">Portfolio</span>
+        <div class="menubar__metrics" aria-label="Public server status">
+          <span class="menubar__health" data-menu-health><span class="menubar__dot" aria-hidden="true"></span><span data-menu-health-label>Connecting</span></span>
+          <span class="menubar__metric">CPU <strong data-menu-cpu>—</strong></span>
+          <span class="menubar__metric">RAM <strong data-menu-memory>—</strong></span>
+          <time id="menu-clock" datetime="" aria-label="Local time"></time>
+        </div>
       </div>
     </header>
 
@@ -80,7 +82,7 @@
           <span class="glyph">z</span>
         </h1>
         <div class="monument__copy">
-          <p class="lede">Independent work on AI agents and the systems around them.</p>
+          <p class="lede">I build useful things and keep them running.</p>
           <p class="hero__kicker">
             <span data-type>build · ship · maintain</span><span class="caret" aria-hidden="true"></span>
           </p>
@@ -147,7 +149,7 @@
           <div class="panel">
             <h2>About</h2>
             <p>
-              I’m Dor, 26, a computer science student. I build in public as d0rz —
+              I’m Dor, a computer science student. I build in public as d0rz —
               products people actually use, the systems they run on, and the quiet
               work between a laptop and something that has to stay up. Class, code,
               and shipping: that’s the whole picture.
@@ -179,6 +181,20 @@
         </article>
       </section>
     </main>
+
+    <nav class="dock" aria-label="Apps and links">
+      <a class="dock__app" href="#about" aria-label="About"><span class="dock__icon dock__icon--about" aria-hidden="true">d0</span><span>About</span></a>
+      <a class="dock__app" href="#live" aria-label="System"><span class="dock__icon dock__icon--system" aria-hidden="true">▥</span><span>System</span></a>
+      <span class="dock__divider" aria-hidden="true"></span>
+      <button class="dock__app" type="button" data-open-cv aria-label="Open CV"><span class="dock__icon dock__icon--cv" aria-hidden="true">CV</span><span>CV</span></button>
+      <a class="dock__app" href="https://github.com/d0raka" target="_blank" rel="noopener noreferrer" aria-label="GitHub, opens in a new tab"><span class="dock__icon dock__icon--github" aria-hidden="true">GH</span><span>GitHub</span></a>
+      <a class="dock__app" href="https://x.com/d0rz_x" target="_blank" rel="noopener noreferrer" aria-label="X, opens in a new tab"><span class="dock__icon dock__icon--x" aria-hidden="true">𝕏</span><span>X</span></a>
+    </nav>
+
+    <dialog class="cv-window" id="cv-dialog" aria-labelledby="cv-title">
+      <div class="cv-window__bar"><span class="cv-window__lights" aria-hidden="true">● ● ●</span><span>dor.cv</span><button type="button" data-close-cv aria-label="Close CV">×</button></div>
+      <div class="cv-window__body"><p class="index">// CURRICULUM VITAE</p><h2 id="cv-title">Dor’s CV</h2><p>The CV app is ready for Dor’s PDF. Experience and education will appear here once the source document is added.</p><p>For now, explore the About and System windows, or visit GitHub and X from the dock.</p></div>
+    </dialog>
 
     <footer class="foot">
       <p class="foot__brand">d0rz</p>

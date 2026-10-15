@@ -7,7 +7,7 @@
 
 Public homepage for d0rz: [d0raka.github.io/d0rz](https://d0raka.github.io/d0rz/)
 
-A static site. The Live System strip reads public JSON from [d0rz-status](https://github.com/d0raka/d0rz-status). It does not talk to a private server. The large **d0rz** wordmark, with two marks in the `0`, is the identity of the page.
+A static, desktop-inspired personal site. The menu bar and System window read public JSON from [d0rz-status](https://github.com/d0raka/d0rz-status). The site does not talk to a private server. The large **d0rz** wordmark, with two marks in the `0`, remains the identity of the page.
 
 ## Demo
 
@@ -16,8 +16,9 @@ A static site. The Live System strip reads public JSON from [d0rz-status](https:
 ## Features
 
 - Hero with the wordmark (the two marks follow the pointer)
-- Live System: health, CPU, memory, disk, uptime, agents, and services
-- About, Agents, and Contact copy in `index.html`
+- Menu bar and System window: health, CPU, memory, disk, uptime, agents, and services
+- Dock links for GitHub and X, plus an in-site CV window awaiting the source PDF
+- About copy in `index.html`
 - Motion is skipped when `prefers-reduced-motion: reduce` is set
 
 ## Tech stack
@@ -46,11 +47,11 @@ Open the URL Vite prints (default `http://localhost:5173`).
 
 ## Usage
 
-The page is one scroll: hero, Live System, About / Agents / Contact, footer. Status numbers come from the JSON feed. The other copy lives in `index.html`.
+The desktop layout shows the hero, System and About windows, and a fixed dock. Narrow screens stack the content. Status numbers come from the JSON feed. Other copy lives in `index.html`. The CV app currently contains a clearly labeled placeholder until Dor provides the PDF.
 
 Field rules and polling: [docs/public-status.md](docs/public-status.md).
 
-GitHub Actions (`.github/workflows/pages.yml`) runs the tests and the production build, then deploys `dist/` to GitHub Pages. Vite uses a relative `base` (`./`), so the same build works at `https://d0raka.github.io/d0rz/`. A `public/CNAME` file is what attaches a custom domain once DNS is ready.
+GitHub Actions (`.github/workflows/pages.yml`) runs the tests and the production build, then deploys `dist/` to GitHub Pages. Vite uses a relative `base` (`./`), so the same build works at `https://d0raka.github.io/d0rz/` and `https://d0raka.cc/`. The domain migration steps and current DNS state are in [docs/custom-domain.md](docs/custom-domain.md).
 
 ## License
 
