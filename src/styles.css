@@ -1529,7 +1529,9 @@ html.motion .foot {
   overflow: hidden;
 }
 .project-window__art--court { background: radial-gradient(circle at 50% 40%, #b9e7cb38, transparent 70%), #1a4b54; }
-.project-window__art--court span { width: 68%; height: 70%; border: 2px solid #d5f0ddba; background: linear-gradient(90deg, transparent 49%, #d5f0ddba 49% 51%, transparent 51%), linear-gradient(transparent 49%, #d5f0ddba 49% 51%, transparent 51%); box-shadow: 0 0 0 9px #16414a; }
+.project-window__art--court { position: relative; overflow: hidden; }
+.project-window__art--court iframe { position: absolute; top: 0; left: 0; width: 400%; height: 400%; border: 0; transform: scale(0.25); transform-origin: 0 0; pointer-events: none; }
+.project-window.is-maximized .project-window__art--court iframe { width: 100%; height: 100%; transform: none; pointer-events: auto; }
 .project-window__art--safe { background: radial-gradient(circle, #91d5bd35, #183439 68%); }
 .project-window__art--safe span { display: grid; place-items: center; width: 62px; height: 70px; border: 2px solid #a9e6d2; border-radius: 14px 14px 24px 24px; color: #a9e6d2; font-size: 1.6rem; box-shadow: 0 0 24px #7dccb547; }
 .project-window__art--server { background: repeating-linear-gradient(0deg, #bdb9da0c 0 1px, transparent 1px 12px), #151d32; }
@@ -1765,7 +1767,6 @@ body { background: radial-gradient(circle at 50% 36%, #1b3154 0%, #081326 60%); 
 .project-window:hover,
 .project-window:focus-within { background: #1b3153; border-color: #a9bfe4; transform: none; }
 .project-window__art--court { background: radial-gradient(circle at 50% 40%, #8da9e43b, transparent 70%), #1e3a66; }
-.project-window__art--court span { border-color: #c7d8fa; background: linear-gradient(90deg, transparent 49%, #c7d8fa 49% 51%, transparent 51%), linear-gradient(transparent 49%, #c7d8fa 49% 51%, transparent 51%); box-shadow: 0 0 0 9px #193458; }
 .project-window__art--safe { background: radial-gradient(circle, #7196d540, #172b4c 70%); }
 .project-window__art--safe span { border-color: #bbcff6; color: #bbcff6; box-shadow: 0 0 24px #7b9ee273; }
 .project-window__art--server { background: repeating-linear-gradient(0deg, #adc5ee10 0 1px, transparent 1px 12px), #111f39; }
