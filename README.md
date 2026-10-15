@@ -1,8 +1,18 @@
 # d0rz
 
+[![CI](https://github.com/d0raka/d0rz/actions/workflows/pages.yml/badge.svg)](https://github.com/d0raka/d0rz/actions/workflows/pages.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
+
 Public homepage for d0rz: [d0rz.is-a.dev](https://d0rz.is-a.dev)
 
 A static site. The Live System strip reads public JSON from [d0rz-status](https://github.com/d0raka/d0rz-status). It does not talk to a private server. The large **d0rz** wordmark, with two marks in the `0`, is the identity of the page.
+
+## Demo
+
+- Live site: [d0rz.is-a.dev](https://d0rz.is-a.dev)
+- Same build on GitHub Pages: [d0raka.github.io/d0rz](https://d0raka.github.io/d0rz/)
 
 ## Features
 
