@@ -54,15 +54,16 @@
 
     <header class="nav menubar">
       <div class="nav__inner">
-        <a class="nav__brand" href="#top" aria-label="Dor Aka home">Dor Aka</a>
-        <span class="menubar__title">Portfolio</span>
-        <div class="menubar__metrics" aria-label="Public server status">
-          <span class="menubar__health" data-menu-health><span class="menubar__dot" aria-hidden="true"></span><span data-menu-health-label>Connecting</span></span>
+        <div class="menubar__identity"><a class="nav__brand" href="#top" aria-label="Dor Aka home">Dor Aka</a><span class="menubar__title">Portfolio</span></div>
+        <div class="menubar__metrics" aria-label="Public server metrics">
           <span class="menubar__metric">CPU <strong data-menu-cpu>—</strong></span>
           <span class="menubar__metric">RAM <strong data-menu-memory>—</strong></span>
           <span class="menubar__metric">Disk <strong data-menu-disk>—</strong></span>
           <span class="menubar__metric">Uptime <strong data-menu-uptime>—</strong></span>
           <span class="menubar__metric menubar__metric--platform" data-menu-platform>Platform —</span>
+        </div>
+        <div class="menubar__state" aria-label="Server status and time">
+          <span class="menubar__health" data-menu-health><span class="menubar__dot" aria-hidden="true"></span><span data-menu-health-label>Connecting</span></span>
           <time class="menubar__updated" data-menu-updated datetime="">Updated —</time>
           <time id="menu-clock" datetime="" aria-label="Local time"></time>
         </div>
