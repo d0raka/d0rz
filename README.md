@@ -5,13 +5,13 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
 
-Public homepage for Dor Aka: [d0raka.github.io/d0rz](https://d0raka.github.io/d0rz/)
+Public homepage for Dor Aka: [d0raka.cc](https://d0raka.cc/)
 
 A static, desktop-inspired personal site. The menu bar reads public JSON from [d0rz-status](https://github.com/d0raka/d0rz-status). The site does not talk to a private server. The main wordmark says DOR, with eyes in the O.
 
 ## Demo
 
-- Live site: [d0raka.github.io/d0rz](https://d0raka.github.io/d0rz/)
+- Live site: [d0raka.cc](https://d0raka.cc/)
 
 ## Features
 
