@@ -1710,7 +1710,7 @@ body { height: 100dvh; min-height: 0; padding-bottom: 0; }
   padding: 17px 20px;
 }
 .panel--about .about-section + .about-section { border-top: 1px solid #ffffff23; }
-.panel--about .about-section::before { color: #91b5b6; font: 700 .62rem var(--font-mono); letter-spacing: .12em; margin-bottom: 8px; }
+.panel--about .about-section::before { color: #91b5b6; font: 700 .8rem var(--font-mono); letter-spacing: .1em; margin-bottom: 8px; }
 .panel--about .about-section:nth-of-type(1)::before { content: "01 / ABOUT"; }
 .panel--about .about-section:nth-of-type(2)::before { content: "02 / WORK"; }
 .panel--about .about-section:nth-of-type(3)::before { content: "03 / CONTACT"; }
@@ -1719,7 +1719,7 @@ body { height: 100dvh; min-height: 0; padding-bottom: 0; }
 .panel--about .about-section h2 { margin-bottom: 8px; font-size: 1.24rem; }
 .panel--about .about-section p { font-size: .96rem; line-height: 1.5; }
 .panel--about .about-section p + p { margin-top: 8px; }
-.panel--about .about-section .panel__links { margin-top: 9px !important; gap: 19px; }
+.panel--about .about-section .panel__links { margin-top: 9px !important; gap: 19px; font-size: .9rem !important; }
 
 @media (min-width: 1251px) and (min-height: 741px) {
   .panel--about { overflow-y: auto; overscroll-behavior: contain; }
