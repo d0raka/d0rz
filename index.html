@@ -3,35 +3,35 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#08090c" />
+    <meta name="theme-color" content="#0b1220" />
     <meta name="color-scheme" content="dark" />
-    <title>d0rz</title>
+    <title>Dor Aka</title>
     <meta
       name="description"
-      content="d0rz — AI agents, software, and the systems around them."
+      content="Dor Aka builds software, AI agents, and the systems around them."
     />
-    <link rel="canonical" href="https://d0raka.github.io/d0rz/" />
+    <link rel="canonical" href="https://d0raka.cc/" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="d0rz" />
-    <meta property="og:title" content="d0rz" />
+    <meta property="og:site_name" content="Dor Aka" />
+    <meta property="og:title" content="Dor Aka" />
     <meta
       property="og:description"
       content="AI agents, software, and the systems around them."
     />
-    <meta property="og:url" content="https://d0raka.github.io/d0rz/" />
-    <meta property="og:image" content="https://d0raka.github.io/d0rz/assets/og.png" />
+    <meta property="og:url" content="https://d0raka.cc/" />
+    <meta property="og:image" content="https://d0raka.cc/assets/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@d0rz_x" />
-    <meta name="twitter:title" content="d0rz" />
+    <meta name="twitter:title" content="Dor Aka" />
     <meta
       name="twitter:description"
       content="AI agents, software, and the systems around them."
     />
-    <meta name="twitter:image" content="https://d0raka.github.io/d0rz/assets/og.png" />
+    <meta name="twitter:image" content="https://d0raka.cc/assets/og.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -44,144 +44,141 @@
 
     <div class="grain" aria-hidden="true"></div>
     <div class="field" aria-hidden="true">
-      <div class="field__glow"></div>
       <div class="field__grid field__grid--fine"></div>
       <div class="field__grid field__grid--major"></div>
       <div class="field__nodes"></div>
-      <div class="field__cross"></div>
       <div class="field__beam"></div>
       <div class="field__sweep"></div>
     </div>
     <div class="scan" aria-hidden="true"></div>
 
-    <header class="nav">
+    <header class="nav menubar">
       <div class="nav__inner">
-        <a class="nav__brand" href="#top" aria-label="d0rz">d0rz</a>
-        <nav class="nav__links" aria-label="Primary">
-          <a href="#live">System</a>
-          <a href="https://github.com/d0raka" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://x.com/d0rz_x" target="_blank" rel="noopener noreferrer">X</a>
-        </nav>
+        <div class="menubar__identity"><a class="nav__brand" href="#top" aria-label="Dor Aka home">Dor Aka</a><span class="menubar__title">Portfolio</span></div>
+        <div class="menubar__metrics" aria-label="Public server metrics">
+          <span class="menubar__metric">CPU <strong data-menu-cpu>—</strong></span>
+          <span class="menubar__metric">RAM <strong data-menu-memory>—</strong></span>
+          <span class="menubar__metric">Disk <strong data-menu-disk>—</strong></span>
+          <span class="menubar__metric">Uptime <strong data-menu-uptime>—</strong></span>
+          <span class="menubar__metric menubar__metric--platform" data-menu-platform>Platform —</span>
+        </div>
+        <div class="menubar__state" aria-label="Server status and time">
+          <span class="menubar__health" data-menu-health><span class="menubar__dot" aria-hidden="true"></span><span data-menu-health-label>Connecting</span></span>
+          <time class="menubar__updated" data-menu-updated datetime="">Updated —</time>
+          <time id="menu-clock" datetime="" aria-label="Local time"></time>
+        </div>
       </div>
     </header>
 
     <main class="stage" id="main">
       <div class="monument">
-        <h1 class="wordmark" id="top" aria-label="d0rz" data-sheen>
-          <span class="glyph">d</span>
+        <h1 class="wordmark" id="top" aria-label="DOR" data-sheen>
+          <span class="glyph">D</span>
           <span class="zero">
-            <span class="glyph glyph--open">0</span>
+            <span class="glyph glyph--open">O</span>
             <span class="pair" aria-hidden="true">
               <span class="dot"></span>
               <span class="dot"></span>
             </span>
           </span>
-          <span class="glyph">r</span>
-          <span class="glyph">z</span>
+          <span class="glyph">R</span>
         </h1>
         <div class="monument__copy">
-          <p class="lede">Independent work on AI agents and the systems around them.</p>
+          <p class="lede">I build useful things and keep them running.</p>
           <p class="hero__kicker">
             <span data-type>build · ship · maintain</span><span class="caret" aria-hidden="true"></span>
           </p>
         </div>
       </div>
 
-      <section class="live is-loading" id="live" aria-labelledby="live-label">
-        <p class="index" id="live-label">Live system</p>
-        <div class="live__frame" data-live aria-busy="true">
-          <header class="live__head">
-            <h2>d0rz workstation</h2>
-            <p class="live__health" data-live-health data-state="loading" aria-live="polite">
-              <span class="live__dot" aria-hidden="true"></span>
-              <span data-live-health-label>Loading</span>
-            </p>
-          </header>
-
-          <div class="live__metrics">
-            <article class="metric">
-              <p class="metric__label">CPU</p>
-              <p class="metric__value" data-live-cpu></p>
-              <svg class="metric__spark" viewBox="0 0 72 18" aria-hidden="true">
-                <polyline data-spark="cpu" fill="none" stroke="currentColor" stroke-width="1"></polyline>
-              </svg>
-            </article>
-            <article class="metric">
-              <p class="metric__label">Memory</p>
-              <p class="metric__value" data-live-memory></p>
-              <svg class="metric__spark" viewBox="0 0 72 18" aria-hidden="true">
-                <polyline data-spark="memory" fill="none" stroke="currentColor" stroke-width="1"></polyline>
-              </svg>
-            </article>
-            <article class="metric">
-              <p class="metric__label">Disk</p>
-              <p class="metric__value" data-live-disk></p>
-              <svg class="metric__spark" viewBox="0 0 72 18" aria-hidden="true">
-                <polyline data-spark="disk" fill="none" stroke="currentColor" stroke-width="1"></polyline>
-              </svg>
-            </article>
-            <article class="metric">
-              <p class="metric__label">Uptime</p>
-              <p class="metric__value" data-live-uptime></p>
-            </article>
-            <article class="metric">
-              <p class="metric__label">Agents</p>
-              <p class="metric__value" data-live-agents></p>
-            </article>
-            <article class="metric">
-              <p class="metric__label">Services</p>
-              <p class="metric__value" data-live-services></p>
-            </article>
-          </div>
-
-          <footer class="live__meta">
-            <p data-live-platform>Reading public status</p>
-            <time data-live-updated datetime="">Updated —</time>
-          </footer>
-        </div>
-      </section>
+      <nav class="scene-nav" aria-label="Portfolio windows">
+        <button type="button" data-scene-button="about" aria-pressed="true">About</button>
+        <button type="button" data-scene-button="work" aria-pressed="false">Work</button>
+        <button type="button" data-scene-button="contact" aria-pressed="false">Contact</button>
+        <button type="button" data-scene-button="tennis" aria-pressed="false">Tennis</button>
+        <button type="button" data-scene-button="keepsafe" aria-pressed="false">KeepSafe</button>
+        <button type="button" data-scene-button="server" aria-pressed="false">Server</button>
+      </nav>
 
       <section class="board" aria-label="About, work, and contact">
-        <article class="cell" id="about">
-          <p class="index">// 01</p>
-          <div class="panel">
-            <h2>About</h2>
-            <p>
-              I’m Dor, 26, a computer science student. I build in public as d0rz —
-              products people actually use, the systems they run on, and the quiet
-              work between a laptop and something that has to stay up. Class, code,
-              and shipping: that’s the whole picture.
-            </p>
+        <article class="cell desktop-window" id="about" data-window="about" data-scene-item="about" data-active>
+          <div class="panel panel--about">
+            <div class="window-bar" data-drag-handle>
+              <span class="window-controls">
+                <button class="window-control window-control--close" type="button" data-window-action="close" aria-label="Close About"></button>
+                <button class="window-control window-control--minimize" type="button" data-window-action="minimize" aria-label="Minimize About"></button>
+                <button class="window-control window-control--maximize" type="button" data-window-action="maximize" aria-label="Maximize About"></button>
+              </span>
+              <span>about.txt</span>
+            </div>
+            <section class="about-section" id="about-intro" data-about-section="about" data-section-active>
+              <p>My name is Dor Aka and I'm a second-year Computer Science student at HIT with a passion for software development and AI.</p>
+              <p>Alongside my studies, I independently build apps, automations, and AI agents. Using advanced AI tools helps me accelerate development and turn ideas into working products, all while maintaining high coding standards.</p>
+            </section>
+            <section class="about-section" id="work" data-about-section="work">
+              <p>I'm seeking a student role in software development or AI engineering, where I can grow alongside an experienced team and deliver meaningful value.</p>
+              <p>Through my various roles, I have developed strong real-time problem-solving skills, the ability to make quick decisions under pressure, and rapid self-learning capabilities.</p>
+            </section>
+            <section class="about-section" id="contact" data-about-section="contact">
+              <p>Sounds like a good fit?</p>
+              <p>I’m always open to discussing new opportunities.</p>
+              <p>Let’s get in touch:</p>
+              <p class="panel__links"><a href="https://github.com/d0raka" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/d0raka" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/d0rz_x" target="_blank" rel="noopener noreferrer">X ↗</a><a href="mailto:dor.aka.inbox@gmail.com" aria-label="Email Dor Aka at dor.aka.inbox@gmail.com">Email ↗</a></p>
+            </section>
           </div>
         </article>
-        <article class="cell" id="now">
-          <p class="index">// 02</p>
-          <div class="panel">
-            <h2>Agents</h2>
-            <p>
-              I design AI agents and the stack around them — not a chat window,
-              systems that take a job, call tools, and run it to the end.
-              Automation, workflows, and agents wired into real software: the
-              model, the glue, and the infrastructure a run has to live on.
-            </p>
-          </div>
+      </section>
+
+      <section class="projects" aria-label="Selected projects">
+        <article class="project-window project-window--court desktop-window" data-window="tennis" data-scene-item="tennis">
+          <div class="window-bar" data-drag-handle><span class="window-controls"><button class="window-control window-control--close" type="button" data-window-action="close" aria-label="Close Courtside Tennis"></button><button class="window-control window-control--minimize" type="button" data-window-action="minimize" aria-label="Minimize Courtside Tennis"></button><button class="window-control window-control--maximize" type="button" data-window-action="maximize" aria-label="Maximize Courtside Tennis"></button></span><span>courtside.tennis</span></div>
+          <a class="project-window__body" href="https://github.com/d0raka/courtside-tennis" target="_blank" rel="noopener noreferrer" aria-label="Courtside Tennis on GitHub, opens in a new tab">
+            <span class="project-window__art project-window__art--court" aria-hidden="true"><span></span></span>
+            <span class="project-window__details"><span class="project-window__number">PROJECT 01 / GAME</span><strong>Courtside Tennis</strong><span>A browser tennis game controlled by two phones.</span></span>
+          </a>
         </article>
-        <article class="cell" id="contact">
-          <p class="index">// 03</p>
-          <div class="panel">
-            <h2>Contact</h2>
-            <p>GitHub and X. That’s the public surface.</p>
-            <p class="panel__links">
-              <a href="https://github.com/d0raka" target="_blank" rel="noopener noreferrer">github.com/d0raka</a>
-              <a href="https://x.com/d0rz_x" target="_blank" rel="noopener noreferrer">x.com/d0rz_x</a>
-            </p>
-          </div>
+        <article class="project-window project-window--safe desktop-window" data-window="keepsafe" data-scene-item="keepsafe">
+          <div class="window-bar" data-drag-handle><span class="window-controls"><button class="window-control window-control--close" type="button" data-window-action="close" aria-label="Close KeepSafe"></button><button class="window-control window-control--minimize" type="button" data-window-action="minimize" aria-label="Minimize KeepSafe"></button><button class="window-control window-control--maximize" type="button" data-window-action="maximize" aria-label="Maximize KeepSafe"></button></span><span>keepsafe.app</span></div>
+          <a class="project-window__body" href="https://github.com/d0raka/keepsafe" target="_blank" rel="noopener noreferrer" aria-label="KeepSafe on GitHub, opens in a new tab">
+            <span class="project-window__art project-window__art--safe" aria-hidden="true"><span>◆</span></span>
+            <span class="project-window__details"><span class="project-window__number">PROJECT 02 / SECURITY</span><strong>KeepSafe</strong><span>A local-first encrypted password manager.</span></span>
+          </a>
+        </article>
+        <article class="project-window project-window--server desktop-window" data-window="server" data-scene-item="server">
+          <div class="window-bar" data-drag-handle><span class="window-controls"><button class="window-control window-control--close" type="button" data-window-action="close" aria-label="Close Server Control"></button><button class="window-control window-control--minimize" type="button" data-window-action="minimize" aria-label="Minimize Server Control"></button><button class="window-control window-control--maximize" type="button" data-window-action="maximize" aria-label="Maximize Server Control"></button></span><span>server.control</span></div>
+          <a class="project-window__body" href="https://github.com/d0raka/claude-server-control-plugin" target="_blank" rel="noopener noreferrer" aria-label="Server Control Plugin on GitHub, opens in a new tab">
+            <span class="project-window__art project-window__art--server" aria-hidden="true"><span>&gt;_</span></span>
+            <span class="project-window__details"><span class="project-window__number">PROJECT 03 / TOOLS</span><strong>Server Control</strong><span>Remote computer control through SSH and Tailscale.</span></span>
+          </a>
         </article>
       </section>
     </main>
 
+    <nav class="dock" aria-label="Apps and links">
+      <a class="dock__app" href="#about" data-open-about aria-label="About"><span class="dock__icon dock__icon--about" aria-hidden="true">DA</span><span>About</span></a>
+      <button class="dock__app" type="button" data-open-projects aria-label="Open projects"><span class="dock__icon dock__icon--projects" aria-hidden="true"><span class="project-app-mark"></span></span><span>Projects</span></button>
+      <button class="dock__app" type="button" data-open-cv aria-label="Open CV"><span class="dock__icon dock__icon--cv" aria-hidden="true"><img src="assets/cv-mark.svg" alt="" /></span><span>CV</span></button>
+      <span class="dock__divider" aria-hidden="true"></span>
+      <a class="dock__app" href="https://github.com/d0raka" target="_blank" rel="noopener noreferrer" aria-label="GitHub, opens in a new tab"><span class="dock__icon dock__icon--github" aria-hidden="true"><img src="assets/github-mark.svg" alt="" /></span><span>GitHub</span></a>
+      <a class="dock__app" href="https://www.linkedin.com/in/d0raka" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn, opens in a new tab"><span class="dock__icon dock__icon--linkedin" aria-hidden="true"><span>in</span></span><span>LinkedIn</span></a>
+      <a class="dock__app" href="https://x.com/d0rz_x" target="_blank" rel="noopener noreferrer" aria-label="X, opens in a new tab"><span class="dock__icon dock__icon--x" aria-hidden="true">𝕏</span><span>X</span></a>
+    </nav>
+
+    <dialog class="cv-window" id="cv-dialog" aria-label="Dor Aka CV">
+      <div class="cv-window__bar window-bar" data-cv-drag-handle>
+        <span class="window-controls">
+          <button class="window-control window-control--close" type="button" data-cv-action="close" aria-label="Close CV"></button>
+          <button class="window-control window-control--minimize" type="button" data-cv-action="minimize" aria-label="Minimize CV"></button>
+          <button class="window-control window-control--maximize" type="button" data-cv-action="maximize" aria-label="Maximize CV"></button>
+        </span>
+        <span class="cv-window__title"><img src="assets/cv-mark.svg" alt="" /> doraka.cv</span>
+        <div class="cv-window__actions"><a class="cv-window__download" href="./Dor_Aka_CV_2026_EN.pdf" download="Dor_Aka_CV_2026_EN.pdf">Download CV ↓</a></div>
+      </div>
+      <iframe class="cv-window__viewer" src="./Dor_Aka_CV_2026_EN.pdf#view=FitH" title="Dor Aka CV PDF"></iframe>
+    </dialog>
+
     <footer class="foot">
-      <p class="foot__brand">d0rz</p>
+      <p class="foot__brand">Dor Aka</p>
       <p class="foot__meta"><time datetime="2026">2026</time></p>
       <p class="foot__clock">
         <span>local</span>

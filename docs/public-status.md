@@ -1,6 +1,6 @@
 # Public system status
 
-The Live System strip on the public site reads one JSON document. It never talks to the private control plane, and it only renders fields from `PublicSystemStatus`.
+The menu bar on the public site reads one JSON document. It never talks to the private control plane. It displays running state, CPU, memory, disk, uptime, platform, and update time from `PublicSystemStatus`. Agent and service counts remain in the feed schema but are not displayed.
 
 ## Schema
 
@@ -22,7 +22,7 @@ type PublicSystemStatus = {
 Rules the frontend enforces:
 
 - Extra keys are ignored (hostnames, IPs, Docker, paths, tokens).
-- `agent_count` must be a non-negative integer. The UI always prints a number (`0`, `1`, `12`), never a placeholder word.
+- `agent_count` must be a non-negative integer, even though the menu does not display it.
 - Percents are 0-100. `updated_at` must be ISO-8601.
 
 Parser: `src/status/parse.ts`. Types: `src/status/types.ts`.
@@ -55,11 +55,11 @@ One application-level source: `src/status/source.ts` (`statusSource`).
 
 - Fetch immediately on start, then about every **60 seconds**.
 - Skip ticks while the tab is hidden; fetch again when it becomes visible.
-- Every metric cell reads the same snapshot. Do not add more timers in UI code.
+- Every menu metric reads the same snapshot. Do not add more timers in UI code.
 
 ## Stale detection
 
-If `updated_at` is older than **15 minutes**, the health label is **Stale** instead of Healthy / Degraded / Offline. Numbers from the last valid payload stay on screen.
+If `updated_at` is older than **15 minutes**, the status label is **Stale** instead of Running / Degraded / Offline. Numbers from the last valid payload stay on screen.
 
 15 minutes is three quiet cycles if the exporter writes every few minutes and the site polls every 60 seconds.
 
@@ -67,11 +67,11 @@ If `updated_at` is older than **15 minutes**, the health label is **Stale** inst
 
 | State | What you see |
 | --- | --- |
-| loading | skeleton cells, Loading |
+| loading | Connecting and placeholder values |
 | invalid JSON / HTTP error | Unavailable; last good numbers if any |
 | stale timestamp | numbers remain, label is **Stale** |
 
-A failed status fetch never blocks the hero, About, Agents, or Contact.
+A failed status fetch never blocks the wordmark, the About, project, or CV windows, or the dock.
 
 ## Deploy
 
