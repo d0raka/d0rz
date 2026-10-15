@@ -18,7 +18,7 @@ A static, desktop-inspired personal site. The menu bar reads public JSON from [d
 - Hero with Dor Aka's name (the eyes in the `o` follow the pointer)
 - Menu bar: running state, CPU, memory, disk, uptime, platform, and last update
 - Dock links for GitHub and X, plus an in-site CV window awaiting the source PDF
-- About copy in `index.html`
+- About, Work, and Contact windows in `index.html`
 - Motion is skipped when `prefers-reduced-motion: reduce` is set
 
 ## Tech stack
@@ -47,7 +47,7 @@ Open the URL Vite prints (default `http://localhost:5173`).
 
 ## Usage
 
-The desktop layout shows the hero, About window, and a fixed dock. Narrow screens stack the content and wrap the menu metrics. Status numbers come from the JSON feed. Other copy lives in `index.html`. The CV app currently contains a clearly labeled placeholder until Dor provides the PDF.
+The desktop layout shows the hero, three windows (About, Work, Contact), and a fixed dock. Narrow screens stack the content and wrap the menu metrics. Status numbers come from the JSON feed. Other copy lives in `index.html`. The CV app currently contains a clearly labeled placeholder until Dor provides the PDF.
 
 Field rules and polling: [docs/public-status.md](docs/public-status.md).
 
