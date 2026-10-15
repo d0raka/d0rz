@@ -19,7 +19,7 @@ A static, desktop-inspired personal site. The menu bar reads public JSON from [d
 - Centered menu bar metrics: CPU, memory, disk, uptime, and platform, with status, update age, and clock grouped on the right
 - A Navy desktop that opens About after three seconds and all three selected project windows shortly after; the dock can open them at any time
 - Draggable windows with close, minimize, and maximize controls
-- A fixed dock with GitHub, LinkedIn, X, and an in-site CV app
+- A fixed dock with GitHub, LinkedIn, X, and a CV app that displays and downloads the PDF
 - A slowly moving grid background that does not track the pointer; motion preferences are respected
 
 ## Tech stack
@@ -48,7 +48,7 @@ Open the URL Vite prints (default `http://localhost:5173`).
 
 ## Usage
 
-The desktop layout fits the viewport without page scrolling. About opens one window containing About, Work, and Contact after about three seconds; Projects opens all three project windows around four seconds after load. Manual window actions take precedence over the delayed opening. Narrow screens use window buttons to show one section at a time. Status numbers come from the JSON feed. Site copy, CV sections, and the selected project links live in `index.html`, so the three temporary project choices are easy to replace. The in-site CV reflects Dor's source PDF plus his later updates: Kavim from April 2026, age 27, and the start of his second year at HIT. The original PDF is not published with the site.
+The desktop layout fits the viewport without page scrolling. About opens one window containing About, Work, and Contact after about three seconds; Projects opens all three project windows around four seconds after load. Manual window actions take precedence over the delayed opening. Narrow screens use window buttons to show one section at a time. Status numbers come from the JSON feed. Site copy and the selected project links live in `index.html`, so the three temporary project choices are easy to replace. The CV app displays `public/Dor_Aka_CV_2026_EN.pdf` and provides a download link; that PDF is published with the site.
 
 Field rules and polling: [docs/public-status.md](docs/public-status.md).
 
