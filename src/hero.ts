@@ -5,7 +5,6 @@ export function initHero(): void {
   if (!reduce) root.classList.add("motion");
 
   const pointer = { x: 0.5, y: 0.42, tx: 0.5, ty: 0.42 };
-  const sheen = document.querySelector("[data-sheen]");
   const typeTarget = document.querySelector("[data-type]");
   const clock = document.getElementById("clock");
   const menuClock = document.getElementById("menu-clock");
@@ -86,12 +85,6 @@ export function initHero(): void {
     if (!running) return;
     pointer.x += (pointer.tx - pointer.x) * 0.1;
     pointer.y += (pointer.ty - pointer.y) * 0.1;
-    if (sheen) {
-      root.style.setProperty("--mx", `${pointer.x * 100}%`);
-      root.style.setProperty("--my", `${pointer.y * 100}%`);
-    }
-    root.style.setProperty("--gx", `${((0.5 - pointer.x) * 36).toFixed(2)}px`);
-    root.style.setProperty("--gy", `${((0.5 - pointer.y) * 28).toFixed(2)}px`);
     gaze();
     requestAnimationFrame(frame);
   }
