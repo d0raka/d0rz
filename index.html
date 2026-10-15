@@ -103,8 +103,16 @@
       </nav>
 
       <section class="board" aria-label="About, work, and contact">
-        <article class="cell" id="about" data-scene-item="about" data-active>
+        <article class="cell desktop-window" id="about" data-window="about" data-scene-item="about" data-active>
           <div class="panel panel--about">
+            <div class="window-bar" data-drag-handle>
+              <span class="window-controls">
+                <button class="window-control window-control--close" type="button" data-window-action="close" aria-label="Close About"></button>
+                <button class="window-control window-control--minimize" type="button" data-window-action="minimize" aria-label="Minimize About"></button>
+                <button class="window-control window-control--maximize" type="button" data-window-action="maximize" aria-label="Maximize About"></button>
+              </span>
+              <span>about.txt</span>
+            </div>
             <section class="about-section" id="about-intro" data-about-section="about" data-section-active>
               <h2>Hi, I’m Dor Aka.</h2>
               <p>I’m a computer science student building practical software, AI tools, and reliable systems.</p>
@@ -123,32 +131,33 @@
       </section>
 
       <section class="projects" aria-label="Selected projects">
-        <a class="project-window project-window--court" data-scene-item="tennis" href="https://github.com/d0raka/courtside-tennis" target="_blank" rel="noopener noreferrer" aria-label="Courtside Tennis on GitHub, opens in a new tab">
-          <span class="project-window__bar"><span aria-hidden="true">● ● ●</span><span>courtside.tennis</span><span>↗</span></span>
-          <span class="project-window__body">
+        <article class="project-window project-window--court desktop-window" data-window="tennis" data-scene-item="tennis">
+          <div class="window-bar" data-drag-handle><span class="window-controls"><button class="window-control window-control--close" type="button" data-window-action="close" aria-label="Close Courtside Tennis"></button><button class="window-control window-control--minimize" type="button" data-window-action="minimize" aria-label="Minimize Courtside Tennis"></button><button class="window-control window-control--maximize" type="button" data-window-action="maximize" aria-label="Maximize Courtside Tennis"></button></span><span>courtside.tennis</span></div>
+          <a class="project-window__body" href="https://github.com/d0raka/courtside-tennis" target="_blank" rel="noopener noreferrer" aria-label="Courtside Tennis on GitHub, opens in a new tab">
             <span class="project-window__art project-window__art--court" aria-hidden="true"><span></span></span>
             <span class="project-window__details"><span class="project-window__number">PROJECT 01 / GAME</span><strong>Courtside Tennis</strong><span>A browser tennis game controlled by two phones.</span></span>
-          </span>
-        </a>
-        <a class="project-window project-window--safe" data-scene-item="keepsafe" href="https://github.com/d0raka/keepsafe" target="_blank" rel="noopener noreferrer" aria-label="KeepSafe on GitHub, opens in a new tab">
-          <span class="project-window__bar"><span aria-hidden="true">● ● ●</span><span>keepsafe.app</span><span>↗</span></span>
-          <span class="project-window__body">
+          </a>
+        </article>
+        <article class="project-window project-window--safe desktop-window" data-window="keepsafe" data-scene-item="keepsafe">
+          <div class="window-bar" data-drag-handle><span class="window-controls"><button class="window-control window-control--close" type="button" data-window-action="close" aria-label="Close KeepSafe"></button><button class="window-control window-control--minimize" type="button" data-window-action="minimize" aria-label="Minimize KeepSafe"></button><button class="window-control window-control--maximize" type="button" data-window-action="maximize" aria-label="Maximize KeepSafe"></button></span><span>keepsafe.app</span></div>
+          <a class="project-window__body" href="https://github.com/d0raka/keepsafe" target="_blank" rel="noopener noreferrer" aria-label="KeepSafe on GitHub, opens in a new tab">
             <span class="project-window__art project-window__art--safe" aria-hidden="true"><span>◆</span></span>
             <span class="project-window__details"><span class="project-window__number">PROJECT 02 / SECURITY</span><strong>KeepSafe</strong><span>A local-first encrypted password manager.</span></span>
-          </span>
-        </a>
-        <a class="project-window project-window--server" data-scene-item="server" href="https://github.com/d0raka/claude-server-control-plugin" target="_blank" rel="noopener noreferrer" aria-label="Server Control Plugin on GitHub, opens in a new tab">
-          <span class="project-window__bar"><span aria-hidden="true">● ● ●</span><span>server.control</span><span>↗</span></span>
-          <span class="project-window__body">
+          </a>
+        </article>
+        <article class="project-window project-window--server desktop-window" data-window="server" data-scene-item="server">
+          <div class="window-bar" data-drag-handle><span class="window-controls"><button class="window-control window-control--close" type="button" data-window-action="close" aria-label="Close Server Control"></button><button class="window-control window-control--minimize" type="button" data-window-action="minimize" aria-label="Minimize Server Control"></button><button class="window-control window-control--maximize" type="button" data-window-action="maximize" aria-label="Maximize Server Control"></button></span><span>server.control</span></div>
+          <a class="project-window__body" href="https://github.com/d0raka/claude-server-control-plugin" target="_blank" rel="noopener noreferrer" aria-label="Server Control Plugin on GitHub, opens in a new tab">
             <span class="project-window__art project-window__art--server" aria-hidden="true"><span>&gt;_</span></span>
             <span class="project-window__details"><span class="project-window__number">PROJECT 03 / TOOLS</span><strong>Server Control</strong><span>Remote computer control through SSH and Tailscale.</span></span>
-          </span>
-        </a>
+          </a>
+        </article>
       </section>
     </main>
 
     <nav class="dock" aria-label="Apps and links">
       <a class="dock__app" href="#about" data-open-about aria-label="About"><span class="dock__icon dock__icon--about" aria-hidden="true">DA</span><span>About</span></a>
+      <button class="dock__app" type="button" data-open-projects aria-label="Open projects"><span class="dock__icon dock__icon--projects" aria-hidden="true"><span class="project-app-mark"></span></span><span>Projects</span></button>
       <span class="dock__divider" aria-hidden="true"></span>
       <button class="dock__app" type="button" data-open-cv aria-label="Open CV"><span class="dock__icon dock__icon--cv" aria-hidden="true"><img src="assets/cv-mark.svg" alt="" /></span><span>CV</span></button>
       <a class="dock__app" href="https://github.com/d0raka" target="_blank" rel="noopener noreferrer" aria-label="GitHub, opens in a new tab"><span class="dock__icon dock__icon--github" aria-hidden="true"><img src="assets/github-mark.svg" alt="" /></span><span>GitHub</span></a>

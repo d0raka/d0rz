@@ -79,11 +79,92 @@ export function initDesktop(source: {
     }
   };
   for (const button of sceneButtons) button.addEventListener("click", () => selectScene(button.dataset.sceneButton ?? "about"));
+  const desktopWindowMode = window.matchMedia("(min-width: 1251px) and (min-height: 741px)");
+  const appWindows = [...document.querySelectorAll<HTMLElement>("[data-window]")];
+  const aboutWindow = appWindows.find((item) => item.dataset.window === "about");
+  const projectWindows = appWindows.filter((item) => item.dataset.window !== "about");
+  const aboutApp = document.querySelector<HTMLElement>("[data-open-about]");
+  const projectsApp = document.querySelector<HTMLElement>("[data-open-projects]");
+  let topLayer = 10;
+  const updateDock = () => {
+    aboutApp?.classList.toggle("is-running", Boolean(aboutWindow?.classList.contains("is-open")));
+    projectsApp?.classList.toggle("is-running", projectWindows.some((item) => item.classList.contains("is-open")));
+  };
+  const openWindow = (item: HTMLElement) => {
+    item.classList.add("is-open");
+    item.style.zIndex = String(++topLayer);
+    updateDock();
+  };
+  const closeWindow = (item: HTMLElement, reset: boolean) => {
+    item.classList.remove("is-open");
+    if (reset) {
+      item.classList.remove("is-maximized");
+      item.style.transform = "";
+      item.dataset.offsetX = "0";
+      item.dataset.offsetY = "0";
+    }
+    updateDock();
+  };
   document.querySelector<HTMLAnchorElement>("[data-open-about]")?.addEventListener("click", (event) => {
     event.preventDefault();
     selectScene("about");
-    if (window.matchMedia("(max-width: 1250px), (max-height: 740px)").matches) {
+    if (desktopWindowMode.matches && aboutWindow) openWindow(aboutWindow);
+    else {
       sceneButtons.find((button) => button.dataset.sceneButton === "about")?.focus();
     }
   });
+  document.querySelector<HTMLButtonElement>("[data-open-projects]")?.addEventListener("click", () => {
+    if (desktopWindowMode.matches) projectWindows.forEach(openWindow);
+    else selectScene("tennis");
+  });
+
+  for (const item of appWindows) {
+    item.addEventListener("pointerdown", () => {
+      if (desktopWindowMode.matches && item.classList.contains("is-open")) item.style.zIndex = String(++topLayer);
+    });
+    for (const button of item.querySelectorAll<HTMLButtonElement>("[data-window-action]")) {
+      button.addEventListener("click", (event) => {
+        event.stopPropagation();
+        if (!desktopWindowMode.matches) return;
+        const action = button.dataset.windowAction;
+        if (action === "close") closeWindow(item, true);
+        if (action === "minimize") closeWindow(item, false);
+        if (action === "maximize") {
+          item.classList.toggle("is-maximized");
+          item.style.transform = item.classList.contains("is-maximized") ? "" : `translate(${item.dataset.offsetX ?? 0}px, ${item.dataset.offsetY ?? 0}px)`;
+          item.style.zIndex = String(++topLayer);
+        }
+      });
+    }
+    const handle = item.querySelector<HTMLElement>("[data-drag-handle]");
+    if (!handle) continue;
+    let startX = 0;
+    let startY = 0;
+    let originX = 0;
+    let originY = 0;
+    let dragging = false;
+    handle.addEventListener("pointerdown", (event) => {
+      if (!desktopWindowMode.matches || event.button !== 0 || item.classList.contains("is-maximized") || (event.target as Element).closest("button")) return;
+      dragging = true;
+      startX = event.clientX;
+      startY = event.clientY;
+      originX = Number(item.dataset.offsetX ?? 0);
+      originY = Number(item.dataset.offsetY ?? 0);
+      handle.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    });
+    handle.addEventListener("pointermove", (event) => {
+      if (!dragging) return;
+      const rect = item.getBoundingClientRect();
+      const baseLeft = rect.left - Number(item.dataset.offsetX ?? 0);
+      const baseTop = rect.top - Number(item.dataset.offsetY ?? 0);
+      const x = Math.max(120 - rect.width - baseLeft, Math.min(window.innerWidth - 120 - baseLeft, originX + event.clientX - startX));
+      const y = Math.max(50 - baseTop, Math.min(window.innerHeight - 100 - baseTop, originY + event.clientY - startY));
+      item.dataset.offsetX = String(x);
+      item.dataset.offsetY = String(y);
+      item.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    handle.addEventListener("pointerup", () => { dragging = false; });
+    handle.addEventListener("pointercancel", () => { dragging = false; });
+  }
 }
