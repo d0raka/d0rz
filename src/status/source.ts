@@ -20,11 +20,16 @@ export type StatusSnapshot = {
 
 export type StatusListener = (snapshot: StatusSnapshot) => void;
 
+const PUBLIC_STATUS_URL =
+  "https://raw.githubusercontent.com/d0raka/d0rz-status/main/status.json";
+
 function resolveStatusUrl(): string | null {
   const remote = import.meta.env.VITE_PUBLIC_STATUS_URL?.trim();
   if (remote) return remote;
-  if (import.meta.env.DEV) return "/status.mock.json";
-  return null;
+  if (import.meta.env.DEV && import.meta.env.MODE !== "live") {
+    return "/status.mock.json";
+  }
+  return PUBLIC_STATUS_URL;
 }
 
 function snapshotFrom(
