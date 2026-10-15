@@ -3,6 +3,7 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -49,6 +50,7 @@ jobs:
         run: npm run build
 
       - name: Publish dist to gh-pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
@@ -56,6 +58,7 @@ jobs:
           clean: true
 
       - name: Point GitHub Pages at gh-pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/github-script@v7
         with:
           script: |
