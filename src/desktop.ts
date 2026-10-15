@@ -65,11 +65,17 @@ export function initDesktop(source: {
 
   const sceneButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-scene-button]")];
   const sceneItems = [...document.querySelectorAll<HTMLElement>("[data-scene-item]")];
+  const aboutSections = [...document.querySelectorAll<HTMLElement>("[data-about-section]")];
   const selectScene = (name: string) => {
     for (const button of sceneButtons) button.setAttribute("aria-pressed", String(button.dataset.sceneButton === name));
+    const isAboutSection = ["about", "work", "contact"].includes(name);
     for (const item of sceneItems) {
-      if (item.dataset.sceneItem === name) item.setAttribute("data-active", "");
+      if (item.dataset.sceneItem === (isAboutSection ? "about" : name)) item.setAttribute("data-active", "");
       else item.removeAttribute("data-active");
+    }
+    for (const section of aboutSections) {
+      if (section.dataset.aboutSection === name) section.setAttribute("data-section-active", "");
+      else section.removeAttribute("data-section-active");
     }
   };
   for (const button of sceneButtons) button.addEventListener("click", () => selectScene(button.dataset.sceneButton ?? "about"));

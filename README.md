@@ -17,7 +17,7 @@ A static, desktop-inspired personal site. The menu bar reads public JSON from [d
 
 - Hero with Dor Aka's name (the eyes in the `o` follow the pointer)
 - Menu bar: running state, CPU, memory, disk, uptime, platform, and last update
-- Three desktop columns: About / Work / Contact, the Dor Aka wordmark, and three selected project cards
+- Three desktop columns: one `about.txt` window with About / Work / Contact, the Dor Aka wordmark, and three selected project cards
 - A fixed dock with GitHub, X, and an in-site CV app
 - A stationary grid background; motion preferences are respected for the remaining interface effects
 
