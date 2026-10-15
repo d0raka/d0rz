@@ -166,7 +166,15 @@
     </nav>
 
     <dialog class="cv-window" id="cv-dialog" aria-label="Dor Aka CV">
-      <div class="cv-window__bar"><span class="cv-window__lights" aria-hidden="true">● ● ●</span><span><img src="assets/cv-mark.svg" alt="" /> dor.cv</span><div class="cv-window__actions"><a class="cv-window__download" href="./Dor_Aka_CV_2026_EN.pdf" download="Dor_Aka_CV_2026_EN.pdf">Download CV ↓</a><button type="button" data-close-cv aria-label="Close CV">×</button></div></div>
+      <div class="cv-window__bar window-bar" data-cv-drag-handle>
+        <span class="window-controls">
+          <button class="window-control window-control--close" type="button" data-cv-action="close" aria-label="Close CV"></button>
+          <button class="window-control window-control--minimize" type="button" data-cv-action="minimize" aria-label="Minimize CV"></button>
+          <button class="window-control window-control--maximize" type="button" data-cv-action="maximize" aria-label="Maximize CV"></button>
+        </span>
+        <span class="cv-window__title"><img src="assets/cv-mark.svg" alt="" /> doraka.cv</span>
+        <div class="cv-window__actions"><a class="cv-window__download" href="./Dor_Aka_CV_2026_EN.pdf" download="Dor_Aka_CV_2026_EN.pdf">Download CV ↓</a></div>
+      </div>
       <iframe class="cv-window__viewer" src="./Dor_Aka_CV_2026_EN.pdf#view=FitH" title="Dor Aka CV PDF"></iframe>
     </dialog>
 

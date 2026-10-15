@@ -33,26 +33,77 @@ export function initDesktop(source: {
 
   const dialog = document.querySelector<HTMLDialogElement>("#cv-dialog");
   const cvApp = document.querySelector<HTMLButtonElement>("[data-open-cv]");
-  const close = document.querySelector<HTMLButtonElement>("[data-close-cv]");
+  const cvHandle = dialog?.querySelector<HTMLElement>("[data-cv-drag-handle]");
   const syncCvDock = () => {
     const isOpen = Boolean(dialog?.open);
     cvApp?.classList.toggle("is-running", isOpen);
     cvApp?.setAttribute("aria-label", isOpen ? "Minimize CV" : "Open CV");
   };
+  const closeCv = (reset: boolean) => {
+    if (!dialog) return;
+    dialog.close();
+    if (reset) {
+      dialog.classList.remove("is-maximized");
+      dialog.style.transform = "";
+      dialog.dataset.offsetX = "0";
+      dialog.dataset.offsetY = "0";
+    }
+    syncCvDock();
+  };
   cvApp?.addEventListener("click", () => {
     if (!dialog) return;
-    if (dialog.open) dialog.close();
+    if (dialog.open) closeCv(false);
     else dialog.show();
     syncCvDock();
   });
-  close?.addEventListener("click", () => dialog?.close());
+  for (const button of dialog?.querySelectorAll<HTMLButtonElement>("[data-cv-action]") ?? []) {
+    button.addEventListener("click", () => {
+      const action = button.dataset.cvAction;
+      if (action === "close") closeCv(true);
+      if (action === "minimize") closeCv(false);
+      if (action === "maximize" && dialog) {
+        dialog.classList.toggle("is-maximized");
+        dialog.style.transform = dialog.classList.contains("is-maximized") ? "" : `translate(${dialog.dataset.offsetX ?? 0}px, ${dialog.dataset.offsetY ?? 0}px)`;
+      }
+    });
+  }
   dialog?.addEventListener("close", syncCvDock);
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && dialog?.open) dialog.close();
+    if (event.key === "Escape" && dialog?.open) closeCv(true);
   });
   dialog?.addEventListener("click", (event) => {
-    if (event.target === dialog) dialog.close();
+    if (event.target === dialog) closeCv(true);
   });
+  if (dialog && cvHandle) {
+    let dragging = false;
+    let startX = 0;
+    let startY = 0;
+    let originX = 0;
+    let originY = 0;
+    cvHandle.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0 || dialog.classList.contains("is-maximized") || (event.target as Element).closest("button, a")) return;
+      dragging = true;
+      startX = event.clientX;
+      startY = event.clientY;
+      originX = Number(dialog.dataset.offsetX ?? 0);
+      originY = Number(dialog.dataset.offsetY ?? 0);
+      cvHandle.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    });
+    cvHandle.addEventListener("pointermove", (event) => {
+      if (!dragging) return;
+      const left = (window.innerWidth - dialog.offsetWidth) / 2;
+      const top = (window.innerHeight - dialog.offsetHeight) / 2;
+      const x = Math.max(16 - left, Math.min(window.innerWidth - dialog.offsetWidth - 16 - left, originX + event.clientX - startX));
+      const y = Math.max(50 - top, Math.min(window.innerHeight - dialog.offsetHeight - 100 - top, originY + event.clientY - startY));
+      dialog.dataset.offsetX = String(x);
+      dialog.dataset.offsetY = String(y);
+      dialog.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    const stopDragging = () => { dragging = false; };
+    cvHandle.addEventListener("pointerup", stopDragging);
+    cvHandle.addEventListener("pointercancel", stopDragging);
+  }
 
   const sceneButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-scene-button]")];
   const sceneItems = [...document.querySelectorAll<HTMLElement>("[data-scene-item]")];
