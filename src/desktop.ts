@@ -155,6 +155,10 @@ export function initDesktop(source: {
     let startY = 0;
     let originX = 0;
     let originY = 0;
+    let baseLeft = 0;
+    let baseTop = 0;
+    let windowWidth = 0;
+    let windowHeight = 0;
     let dragging = false;
     handle.addEventListener("pointerdown", (event) => {
       if (!desktopWindowMode.matches || event.button !== 0 || item.classList.contains("is-maximized") || (event.target as Element).closest("button")) return;
@@ -163,21 +167,25 @@ export function initDesktop(source: {
       startY = event.clientY;
       originX = Number(item.dataset.offsetX ?? 0);
       originY = Number(item.dataset.offsetY ?? 0);
+      item.classList.add("is-dragging");
+      const rect = item.getBoundingClientRect();
+      baseLeft = rect.left - originX;
+      baseTop = rect.top - originY;
+      windowWidth = rect.width;
+      windowHeight = rect.height;
       handle.setPointerCapture(event.pointerId);
       event.preventDefault();
     });
     handle.addEventListener("pointermove", (event) => {
       if (!dragging) return;
-      const rect = item.getBoundingClientRect();
-      const baseLeft = rect.left - Number(item.dataset.offsetX ?? 0);
-      const baseTop = rect.top - Number(item.dataset.offsetY ?? 0);
-      const x = Math.max(120 - rect.width - baseLeft, Math.min(window.innerWidth - 120 - baseLeft, originX + event.clientX - startX));
-      const y = Math.max(50 - baseTop, Math.min(window.innerHeight - 100 - baseTop, originY + event.clientY - startY));
+      const x = Math.max(16 - baseLeft, Math.min(window.innerWidth - windowWidth - 16 - baseLeft, originX + event.clientX - startX));
+      const y = Math.max(50 - baseTop, Math.min(window.innerHeight - windowHeight - 16 - baseTop, originY + event.clientY - startY));
       item.dataset.offsetX = String(x);
       item.dataset.offsetY = String(y);
       item.style.transform = `translate(${x}px, ${y}px)`;
     });
-    handle.addEventListener("pointerup", () => { dragging = false; });
-    handle.addEventListener("pointercancel", () => { dragging = false; });
+    const stopDragging = () => { dragging = false; item.classList.remove("is-dragging"); };
+    handle.addEventListener("pointerup", stopDragging);
+    handle.addEventListener("pointercancel", stopDragging);
   }
 }
