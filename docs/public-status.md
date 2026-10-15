@@ -71,7 +71,7 @@ If `updated_at` is older than **15 minutes**, the status label is **Stale** inst
 | invalid JSON / HTTP error | Unavailable; last good numbers if any |
 | stale timestamp | numbers remain, label is **Stale** |
 
-A failed status fetch never blocks the hero, About, Agents, or Contact.
+A failed status fetch never blocks the wordmark, the About, project, or CV windows, or the dock.
 
 ## Deploy
 
