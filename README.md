@@ -19,7 +19,7 @@ A static, desktop-inspired personal site. The menu bar reads public JSON from [d
 - Centered menu bar metrics: CPU, memory, disk, uptime, and platform, with status, update age, and clock grouped on the right
 - A Navy desktop that opens About after three seconds and all three selected project windows shortly after; the dock can open them at any time
 - Draggable windows with close, minimize, and maximize controls
-- A fixed dock with GitHub, X, and an in-site CV app
+- A fixed dock with GitHub, LinkedIn, X, and an in-site CV app
 - A slowly moving grid background that does not track the pointer; motion preferences are respected
 
 ## Tech stack

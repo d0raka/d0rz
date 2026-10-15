@@ -1705,11 +1705,10 @@ body { height: 100dvh; min-height: 0; padding-bottom: 0; }
 .panel--about .about-section {
   display: flex;
   flex-direction: column;
-  flex: 1 1 0;
+  flex: 1 1 auto;
   min-height: 0;
   padding: 17px 20px;
 }
-.panel--about .about-section:first-of-type { flex-grow: 1.13; }
 .panel--about .about-section + .about-section { border-top: 1px solid #ffffff23; }
 .panel--about .about-section::before { color: #91b5b6; font: .62rem var(--font-mono); letter-spacing: .12em; margin-bottom: 8px; }
 .panel--about .about-section:nth-of-type(1)::before { content: "01 / ABOUT"; }
@@ -1877,6 +1876,9 @@ html.motion .field__nodes { animation-duration: 55s; }
 }
 .dock__icon--cv { background: linear-gradient(145deg, #7299d9, #2b518f); color: #f2f6ff; }
 .dock__icon--cv img { width: 32px; height: 32px; }
+.dock__icon--linkedin { background: linear-gradient(145deg, #3675c0, #174682); color: #fff; }
+.dock__icon--linkedin span { font: 700 1.6rem/1 Arial, sans-serif; letter-spacing: -.09em; margin: 4px 3px 0 0; }
+.panel--about .about-section .panel__links { flex-wrap: wrap; column-gap: 16px; }
 
 /* A short window reveal on automatic and dock opening. */
 @keyframes window-open {
