@@ -1802,16 +1802,32 @@ body { background: radial-gradient(circle at 50% 36%, #1b3154 0%, #081326 60%); 
 .window-control--close { background: #ff6059; }
 .window-control--minimize { background: #ffbd2e; }
 .window-control--maximize { background: #28c840; }
-.window-control::after { position: absolute; inset: 0; display: grid; place-items: center; color: #162037; font: 700 10px var(--font-sans); opacity: 0; }
-.window-control--close::after { content: "×"; }
-.window-control--minimize::after { content: "−"; }
-.window-control--maximize::after { content: "+"; }
+.window-control::before,
+.window-control::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: #243044;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+.window-control--close::before { transform: translate(-50%, -50%) rotate(45deg); }
+.window-control--close::after { transform: translate(-50%, -50%) rotate(-45deg); }
+.window-control--maximize::before { transform: translate(-50%, -50%) rotate(90deg); }
+.window-bar:hover .window-control::before,
 .window-bar:hover .window-control::after,
+.window-control:focus-visible::before,
 .window-control:focus-visible::after { opacity: 1; }
 .project-window__body { color: inherit; text-decoration: none; }
 .project-window__body:hover { color: #f5f8ff; }
 .desktop-window { position: relative; }
 .desktop-window.is-dragging { transition: none; }
+.cv-window[open] { position: fixed; inset: 0; z-index: 40; margin: auto; }
 @media (min-width: 1251px) and (min-height: 741px) {
   .stage { overflow: visible; }
 }

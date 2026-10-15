@@ -32,10 +32,24 @@ export function initDesktop(source: {
   });
 
   const dialog = document.querySelector<HTMLDialogElement>("#cv-dialog");
-  const open = document.querySelector<HTMLButtonElement>("[data-open-cv]");
+  const cvApp = document.querySelector<HTMLButtonElement>("[data-open-cv]");
   const close = document.querySelector<HTMLButtonElement>("[data-close-cv]");
-  open?.addEventListener("click", () => dialog?.showModal());
+  const syncCvDock = () => {
+    const isOpen = Boolean(dialog?.open);
+    cvApp?.classList.toggle("is-running", isOpen);
+    cvApp?.setAttribute("aria-label", isOpen ? "Minimize CV" : "Open CV");
+  };
+  cvApp?.addEventListener("click", () => {
+    if (!dialog) return;
+    if (dialog.open) dialog.close();
+    else dialog.show();
+    syncCvDock();
+  });
   close?.addEventListener("click", () => dialog?.close());
+  dialog?.addEventListener("close", syncCvDock);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && dialog?.open) dialog.close();
+  });
   dialog?.addEventListener("click", (event) => {
     if (event.target === dialog) dialog.close();
   });
@@ -89,8 +103,12 @@ export function initDesktop(source: {
   let projectsTouched = false;
   let topLayer = 10;
   const updateDock = () => {
-    aboutApp?.classList.toggle("is-running", Boolean(aboutWindow?.classList.contains("is-open")));
-    projectsApp?.classList.toggle("is-running", projectWindows.some((item) => item.classList.contains("is-open")));
+    const aboutOpen = Boolean(aboutWindow?.classList.contains("is-open"));
+    const projectsOpen = projectWindows.some((item) => item.classList.contains("is-open"));
+    aboutApp?.classList.toggle("is-running", aboutOpen);
+    aboutApp?.setAttribute("aria-label", aboutOpen ? "Minimize About" : "Open About");
+    projectsApp?.classList.toggle("is-running", projectsOpen);
+    projectsApp?.setAttribute("aria-label", projectsOpen ? "Minimize all projects" : "Open all projects");
   };
   const openWindow = (item: HTMLElement) => {
     item.classList.add("is-open");
@@ -110,15 +128,21 @@ export function initDesktop(source: {
   document.querySelector<HTMLAnchorElement>("[data-open-about]")?.addEventListener("click", (event) => {
     event.preventDefault();
     aboutTouched = true;
-    selectScene("about");
-    if (desktopWindowMode.matches && aboutWindow) openWindow(aboutWindow);
+    if (desktopWindowMode.matches && aboutWindow) {
+      if (aboutWindow.classList.contains("is-open")) closeWindow(aboutWindow, false);
+      else { selectScene("about"); openWindow(aboutWindow); }
+    }
     else {
+      selectScene("about");
       sceneButtons.find((button) => button.dataset.sceneButton === "about")?.focus();
     }
   });
   document.querySelector<HTMLButtonElement>("[data-open-projects]")?.addEventListener("click", () => {
     projectsTouched = true;
-    if (desktopWindowMode.matches) projectWindows.forEach(openWindow);
+    if (desktopWindowMode.matches) {
+      if (projectWindows.some((item) => item.classList.contains("is-open"))) projectWindows.forEach((item) => closeWindow(item, false));
+      else projectWindows.forEach(openWindow);
+    }
     else selectScene("tennis");
   });
 
