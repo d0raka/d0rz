@@ -93,26 +93,31 @@
         </div>
       </div>
 
+      <nav class="scene-nav" aria-label="Portfolio windows">
+        <button type="button" data-scene-button="about" aria-pressed="true">About</button>
+        <button type="button" data-scene-button="work" aria-pressed="false">Work</button>
+        <button type="button" data-scene-button="contact" aria-pressed="false">Contact</button>
+        <button type="button" data-scene-button="tennis" aria-pressed="false">Tennis</button>
+        <button type="button" data-scene-button="keepsafe" aria-pressed="false">KeepSafe</button>
+        <button type="button" data-scene-button="server" aria-pressed="false">Server</button>
+      </nav>
+
       <section class="board" aria-label="About, work, and contact">
-        <article class="cell" id="about">
+        <article class="cell" id="about" data-scene-item="about" data-active>
           <p class="index">// 01</p>
           <div class="panel">
             <h2>Hi, I’m Dor Aka.</h2>
-            <p>
-              I’m a computer science student. I build in public —
-              products people actually use, the systems they run on, and the quiet
-              work between a laptop and something that has to stay up.
-            </p>
+            <p>I’m a computer science student building practical software, AI tools, and reliable systems.</p>
           </div>
         </article>
-        <article class="cell" id="work">
+        <article class="cell" id="work" data-scene-item="work">
           <p class="index">// 02</p>
           <div class="panel">
             <h2>Work</h2>
             <p>I design AI agents and the software around them: workflows, tools, and infrastructure that carry a task through to completion.</p>
           </div>
         </article>
-        <article class="cell" id="contact">
+        <article class="cell" id="contact" data-scene-item="contact">
           <p class="index">// 03</p>
           <div class="panel">
             <h2>Contact</h2>
@@ -123,21 +128,21 @@
       </section>
 
       <section class="projects" aria-label="Selected projects">
-        <a class="project-window project-window--court" href="https://github.com/d0raka/courtside-tennis" target="_blank" rel="noopener noreferrer" aria-label="Courtside Tennis on GitHub, opens in a new tab">
+        <a class="project-window project-window--court" data-scene-item="tennis" href="https://github.com/d0raka/courtside-tennis" target="_blank" rel="noopener noreferrer" aria-label="Courtside Tennis on GitHub, opens in a new tab">
           <span class="project-window__bar"><span aria-hidden="true">● ● ●</span><span>courtside.tennis</span><span>↗</span></span>
           <span class="project-window__body">
             <span class="project-window__art project-window__art--court" aria-hidden="true"><span></span></span>
             <span class="project-window__details"><span class="project-window__number">PROJECT 01 / GAME</span><strong>Courtside Tennis</strong><span>A browser tennis game controlled by two phones.</span></span>
           </span>
         </a>
-        <a class="project-window project-window--safe" href="https://github.com/d0raka/keepsafe" target="_blank" rel="noopener noreferrer" aria-label="KeepSafe on GitHub, opens in a new tab">
+        <a class="project-window project-window--safe" data-scene-item="keepsafe" href="https://github.com/d0raka/keepsafe" target="_blank" rel="noopener noreferrer" aria-label="KeepSafe on GitHub, opens in a new tab">
           <span class="project-window__bar"><span aria-hidden="true">● ● ●</span><span>keepsafe.app</span><span>↗</span></span>
           <span class="project-window__body">
             <span class="project-window__art project-window__art--safe" aria-hidden="true"><span>◆</span></span>
             <span class="project-window__details"><span class="project-window__number">PROJECT 02 / SECURITY</span><strong>KeepSafe</strong><span>A local-first encrypted password manager.</span></span>
           </span>
         </a>
-        <a class="project-window project-window--server" href="https://github.com/d0raka/claude-server-control-plugin" target="_blank" rel="noopener noreferrer" aria-label="Server Control Plugin on GitHub, opens in a new tab">
+        <a class="project-window project-window--server" data-scene-item="server" href="https://github.com/d0raka/claude-server-control-plugin" target="_blank" rel="noopener noreferrer" aria-label="Server Control Plugin on GitHub, opens in a new tab">
           <span class="project-window__bar"><span aria-hidden="true">● ● ●</span><span>server.control</span><span>↗</span></span>
           <span class="project-window__body">
             <span class="project-window__art project-window__art--server" aria-hidden="true"><span>&gt;_</span></span>
@@ -148,16 +153,40 @@
     </main>
 
     <nav class="dock" aria-label="Apps and links">
-      <a class="dock__app" href="#about" aria-label="About"><span class="dock__icon dock__icon--about" aria-hidden="true">DA</span><span>About</span></a>
+      <a class="dock__app" href="#about" data-open-about aria-label="About"><span class="dock__icon dock__icon--about" aria-hidden="true">DA</span><span>About</span></a>
       <span class="dock__divider" aria-hidden="true"></span>
-      <button class="dock__app" type="button" data-open-cv aria-label="Open CV"><span class="dock__icon dock__icon--cv" aria-hidden="true">CV</span><span>CV</span></button>
-      <a class="dock__app" href="https://github.com/d0raka" target="_blank" rel="noopener noreferrer" aria-label="GitHub, opens in a new tab"><span class="dock__icon dock__icon--github" aria-hidden="true">GH</span><span>GitHub</span></a>
+      <button class="dock__app" type="button" data-open-cv aria-label="Open CV"><span class="dock__icon dock__icon--cv" aria-hidden="true"><img src="assets/cv-mark.svg" alt="" /></span><span>CV</span></button>
+      <a class="dock__app" href="https://github.com/d0raka" target="_blank" rel="noopener noreferrer" aria-label="GitHub, opens in a new tab"><span class="dock__icon dock__icon--github" aria-hidden="true"><img src="assets/github-mark.svg" alt="" /></span><span>GitHub</span></a>
       <a class="dock__app" href="https://x.com/d0rz_x" target="_blank" rel="noopener noreferrer" aria-label="X, opens in a new tab"><span class="dock__icon dock__icon--x" aria-hidden="true">𝕏</span><span>X</span></a>
     </nav>
 
     <dialog class="cv-window" id="cv-dialog" aria-labelledby="cv-title">
-      <div class="cv-window__bar"><span class="cv-window__lights" aria-hidden="true">● ● ●</span><span>dor.cv</span><button type="button" data-close-cv aria-label="Close CV">×</button></div>
-      <div class="cv-window__body"><p class="index">// CURRICULUM VITAE</p><h2 id="cv-title">Dor Aka’s CV</h2><p>The CV app is ready for Dor’s PDF. Experience and education will appear here once the source document is added.</p><p>For now, explore About, GitHub, and X from the dock.</p></div>
+      <div class="cv-window__bar"><span class="cv-window__lights" aria-hidden="true">● ● ●</span><span><img src="assets/cv-mark.svg" alt="" /> dor.cv</span><button type="button" data-close-cv aria-label="Close CV">×</button></div>
+      <div class="cv-window__body">
+        <p class="index">// CURRICULUM VITAE</p>
+        <h2 id="cv-title">Dor Aka</h2>
+        <p class="cv-window__intro">Computer science student · Software and AI tools · Operations</p>
+        <div class="cv-window__tabs" role="tablist" aria-label="CV sections">
+          <button type="button" role="tab" id="cv-tab-profile" aria-controls="cv-profile" aria-selected="true" data-cv-tab="profile">Profile</button>
+          <button type="button" role="tab" id="cv-tab-experience" aria-controls="cv-experience" aria-selected="false" tabindex="-1" data-cv-tab="experience">Experience</button>
+          <button type="button" role="tab" id="cv-tab-skills" aria-controls="cv-skills" aria-selected="false" tabindex="-1" data-cv-tab="skills">Skills</button>
+        </div>
+        <section class="cv-window__page" id="cv-profile" role="tabpanel" aria-labelledby="cv-tab-profile" data-cv-page="profile">
+          <p>I’m 27 and starting my second year of Computer Science at HIT. I build practical web software, AI workflows, and tools that help people get work done.</p>
+          <div class="cv-window__fact"><span>NOW</span><strong>Control room · Kavim</strong><small>April 2026 – Present</small></div>
+          <div class="cv-window__fact"><span>STUDY</span><strong>B.Sc. Computer Science · HIT</strong><small>Second year, starting now</small></div>
+        </section>
+        <section class="cv-window__page" id="cv-experience" role="tabpanel" aria-labelledby="cv-tab-experience" data-cv-page="experience" hidden>
+          <div class="cv-window__fact"><span>APR 2026 – PRESENT</span><strong>Kavim · Control room</strong><small>Current role in Kavim’s control room.</small></div>
+          <div class="cv-window__fact"><span>MAR 2023 – OCT 2025</span><strong>Wolt · Customer support and training</strong><small>Resolved real-time issues, trained new agents, and led small teams.</small></div>
+          <div class="cv-window__fact"><span>FEB 2022 – FEB 2023</span><strong>Duvdevan · Trip security</strong><small>Supported groups in the field with safety and first response.</small></div>
+        </section>
+        <section class="cv-window__page" id="cv-skills" role="tabpanel" aria-labelledby="cv-tab-skills" data-cv-page="skills" hidden>
+          <div class="cv-window__fact"><span>BUILD</span><strong>Web and software</strong><small>HTML, CSS, JavaScript, Git, Linux, Chrome DevTools.</small></div>
+          <div class="cv-window__fact"><span>EXPLORE</span><strong>AI agents and automation</strong><small>Claude, Cursor, tool use, and prompt engineering.</small></div>
+          <div class="cv-window__fact"><span>LANGUAGES</span><strong>Hebrew and English</strong><small>Native Hebrew; strong English.</small></div>
+        </section>
+      </div>
     </dialog>
 
     <footer class="foot">
