@@ -1877,3 +1877,23 @@ html.motion .field__nodes { animation-duration: 55s; }
 }
 .dock__icon--cv { background: linear-gradient(145deg, #7299d9, #2b518f); color: #f2f6ff; }
 .dock__icon--cv img { width: 32px; height: 32px; }
+
+/* A short window reveal on automatic and dock opening. */
+@keyframes window-open {
+  0% { opacity: 0; scale: .92; translate: 0 18px; filter: blur(7px); }
+  68% { opacity: 1; scale: 1.012; translate: 0 -2px; filter: blur(0); }
+  100% { opacity: 1; scale: 1; translate: 0 0; filter: blur(0); }
+}
+@keyframes cv-open {
+  from { opacity: 0; scale: .94; filter: blur(5px); }
+  to { opacity: 1; scale: 1; filter: blur(0); }
+}
+@media (min-width: 1251px) and (min-height: 741px) {
+  html.motion .desktop-window.is-open { animation: window-open 520ms cubic-bezier(.2,.8,.2,1) both; animation-delay: var(--window-delay, 0ms); }
+  .project-window:nth-child(2) { --window-delay: 90ms; }
+  .project-window:nth-child(3) { --window-delay: 180ms; }
+}
+.cv-window[open] { animation: cv-open 300ms cubic-bezier(.2,.8,.2,1) both; }
+@media (prefers-reduced-motion: reduce) {
+  html.motion .desktop-window.is-open, .cv-window[open] { animation: none; }
+}
