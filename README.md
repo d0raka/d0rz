@@ -5,14 +5,13 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
 
-Public homepage for d0rz: [d0rz.is-a.dev](https://d0rz.is-a.dev)
+Public homepage for d0rz: [d0raka.github.io/d0rz](https://d0raka.github.io/d0rz/)
 
 A static site. The Live System strip reads public JSON from [d0rz-status](https://github.com/d0raka/d0rz-status). It does not talk to a private server. The large **d0rz** wordmark, with two marks in the `0`, is the identity of the page.
 
 ## Demo
 
-- Live site: [d0rz.is-a.dev](https://d0rz.is-a.dev)
-- Same build on GitHub Pages: [d0raka.github.io/d0rz](https://d0raka.github.io/d0rz/)
+- Live site: [d0raka.github.io/d0rz](https://d0raka.github.io/d0rz/)
 
 ## Features
 
@@ -51,7 +50,7 @@ The page is one scroll: hero, Live System, About / Agents / Contact, footer. Sta
 
 Field rules and polling: [docs/public-status.md](docs/public-status.md).
 
-GitHub Actions (`.github/workflows/pages.yml`) runs the tests and the production build, then deploys `dist/` to GitHub Pages. Vite uses a relative `base` (`./`), so the same build works at `https://d0raka.github.io/d0rz/` and at `d0rz.is-a.dev`. A `public/CNAME` file is what attaches the custom domain once DNS is ready.
+GitHub Actions (`.github/workflows/pages.yml`) runs the tests and the production build, then deploys `dist/` to GitHub Pages. Vite uses a relative `base` (`./`), so the same build works at `https://d0raka.github.io/d0rz/`. A `public/CNAME` file is what attaches a custom domain once DNS is ready.
 
 ## License
 
