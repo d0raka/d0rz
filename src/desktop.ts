@@ -121,7 +121,7 @@ export function initDesktop(source: {
     }
   };
   for (const button of sceneButtons) button.addEventListener("click", () => selectScene(button.dataset.sceneButton ?? "about"));
-  const desktopWindowMode = window.matchMedia("(min-width: 1400px) and (min-height: 900px)");
+  const desktopWindowMode = window.matchMedia("(min-width: 1251px) and (min-height: 741px)");
   const appWindows = [...document.querySelectorAll<HTMLElement>("[data-window]")];
   const aboutWindow = appWindows.find((item) => item.dataset.window === "about");
   const projectWindows = appWindows.filter((item) => item.dataset.window !== "about");
