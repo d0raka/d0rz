@@ -105,22 +105,6 @@ export function initDesktop(source: {
     cvHandle.addEventListener("pointercancel", stopDragging);
   }
 
-  const sceneButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-scene-button]")];
-  const sceneItems = [...document.querySelectorAll<HTMLElement>("[data-scene-item]")];
-  const aboutSections = [...document.querySelectorAll<HTMLElement>("[data-about-section]")];
-  const selectScene = (name: string) => {
-    for (const button of sceneButtons) button.setAttribute("aria-pressed", String(button.dataset.sceneButton === name));
-    const isAboutSection = ["about", "work", "contact"].includes(name);
-    for (const item of sceneItems) {
-      if (item.dataset.sceneItem === (isAboutSection ? "about" : name)) item.setAttribute("data-active", "");
-      else item.removeAttribute("data-active");
-    }
-    for (const section of aboutSections) {
-      if (section.dataset.aboutSection === name) section.setAttribute("data-section-active", "");
-      else section.removeAttribute("data-section-active");
-    }
-  };
-  for (const button of sceneButtons) button.addEventListener("click", () => selectScene(button.dataset.sceneButton ?? "about"));
   const desktopWindowMode = window.matchMedia("(min-width: 1251px) and (min-height: 741px)");
   const appWindows = [...document.querySelectorAll<HTMLElement>("[data-window]")];
   const aboutWindow = appWindows.find((item) => item.dataset.window === "about");
@@ -153,37 +137,31 @@ export function initDesktop(source: {
     }
     updateDock();
   };
-  desktopWindowMode.addEventListener("change", (event) => {
-    if (!event.matches) return;
-    if (!aboutTouched && aboutWindow && !aboutWindow.classList.contains("is-open")) openWindow(aboutWindow);
-    if (!projectsTouched) projectWindows.filter((item) => !item.classList.contains("is-open")).forEach(openWindow);
-  });
   document.querySelector<HTMLAnchorElement>("[data-open-about]")?.addEventListener("click", (event) => {
     event.preventDefault();
     aboutTouched = true;
-    if (desktopWindowMode.matches && aboutWindow) {
+    if (aboutWindow) {
       if (aboutWindow.classList.contains("is-open")) closeWindow(aboutWindow, false);
-      else { selectScene("about"); openWindow(aboutWindow); }
-    }
-    else {
-      selectScene("about");
-      sceneButtons.find((button) => button.dataset.sceneButton === "about")?.focus();
+      else {
+        openWindow(aboutWindow);
+        if (!desktopWindowMode.matches) aboutWindow.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
   });
   document.querySelector<HTMLButtonElement>("[data-open-projects]")?.addEventListener("click", () => {
     projectsTouched = true;
-    if (desktopWindowMode.matches) {
-      if (projectWindows.some((item) => item.classList.contains("is-open"))) projectWindows.forEach((item) => closeWindow(item, false));
-      else projectWindows.forEach(openWindow);
+    if (projectWindows.some((item) => item.classList.contains("is-open"))) projectWindows.forEach((item) => closeWindow(item, false));
+    else {
+      projectWindows.forEach(openWindow);
+      if (!desktopWindowMode.matches) projectWindows[0]?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    else selectScene("tennis");
   });
 
   window.setTimeout(() => {
-    if (desktopWindowMode.matches && !aboutTouched && aboutWindow) openWindow(aboutWindow);
+    if (!aboutTouched && aboutWindow) openWindow(aboutWindow);
   }, 3000);
   window.setTimeout(() => {
-    if (desktopWindowMode.matches && !projectsTouched) projectWindows.forEach(openWindow);
+    if (!projectsTouched) projectWindows.forEach(openWindow);
   }, 3800);
 
   for (const item of appWindows) {
@@ -193,7 +171,6 @@ export function initDesktop(source: {
     for (const button of item.querySelectorAll<HTMLButtonElement>("[data-window-action]")) {
       button.addEventListener("click", (event) => {
         event.stopPropagation();
-        if (!desktopWindowMode.matches) return;
         if (item === aboutWindow) aboutTouched = true;
         else projectsTouched = true;
         const action = button.dataset.windowAction;
